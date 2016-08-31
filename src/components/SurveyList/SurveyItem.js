@@ -2,8 +2,11 @@ import React from 'react';
 
 class SurveyItem extends React.Component {
   render() {
+    let { survey: { title, description } } = this.props;
     return (
-      <div />
+      <div>
+        {title}
+      </div>
     );
   }
 }

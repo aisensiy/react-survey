@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import NewSurveyView from '../components/NewSurvey';
 import SurveyListView from '../components/SurveyList/SurveyList';
-import { fetchSurveysRequest } from '../actions/surveys';
+import { fetchSurveysRequest, createSurveyRequest, resetCreateSurvey } from '../actions/surveys';
 
 class UserSurveysPage extends React.Component {
   loadData() {
@@ -34,10 +34,13 @@ class UserSurveysPage extends React.Component {
     }
 
     return (
-      <div>
-        <NewSurveyView onClick={()=>{}}/>
-        <SurveyListView surveys={surveys}/>
-      </div>
+        <div>
+          <NewSurveyView
+              onClick={()=>{
+            this.props.createSurvey(this.props.currentUser.email);
+          }} isLoading={this.props.isCreatingSurvey}/>
+          <SurveyListView surveys={surveys}/>
+        </div>
     );
   }
 }
@@ -46,12 +49,16 @@ const mapStateToProps = (state) => ({
   surveys: state.surveys.surveys,
   isLoading: state.surveys.isLoading,
   loadError: state.surveys.error,
-  currentUser: state.session.user
+  currentUser: state.session.user,
+  newSurvey: state.create_survey.survey,
+  isCreatingSurvey: state.create_survey.isLoading,
+  createSurveyError: state.create_survey.error
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSurveys: bindActionCreators(fetchSurveysRequest, dispatch)
+    fetchSurveys: bindActionCreators(fetchSurveysRequest, dispatch),
+    createSurvey: bindActionCreators(createSurveyRequest, dispatch)
   }
 };
 

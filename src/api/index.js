@@ -45,6 +45,18 @@ export const fetchUserSurveys = (email) => {
     startkey: `${email}-survey-`,
     endkey: `${email}-survey-\uffff`
   }).then(res => {
-    return Promise.resolve(res.rows);
+    return Promise.resolve(res.rows.map(row => row.doc));
+  });
+};
+
+export const createSurvey = (email) => {
+  return db.put({
+    _id: `${email}-survey-${v4()}`,
+    title: "No Title",
+    subTitle: 'No Description',
+    questions: []
+  }).then(res => {
+    console.log(res);
+    return db.get(res.id);
   });
 };
