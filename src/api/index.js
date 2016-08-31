@@ -34,3 +34,17 @@ export const login = (email, password) => {
     return Promise.resolve(user);
   });
 };
+
+export const fetchCurrentUser = () => {
+  return db.get('session');
+};
+
+export const fetchUserSurveys = (email) => {
+  return db.allDocs({
+    include_docs: true,
+    startkey: `${email}-survey-`,
+    endkey: `${email}-survey-\uffff`
+  }).then(res => {
+    return Promise.resolve(res.rows);
+  });
+};

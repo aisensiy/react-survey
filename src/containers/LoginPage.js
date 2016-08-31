@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LoginFormView from '../components/LoginForm';
 import { loginRequest, loginRequestSuccess, loginRequestFail } from '../actions/login';
+import { home } from '../reducers/session';
 
 class LoginPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.isLoginSuccess) {
-      this.props.router.push('/');
+      this.props.router.push(home(nextProps.currentUser));
     }
   }
 
@@ -21,7 +22,8 @@ class LoginPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isLoginSuccess: state.session.isSuccess
+    isLoginSuccess: state.session.isSuccess,
+    currentUser: state.session.user
   }
 };
 

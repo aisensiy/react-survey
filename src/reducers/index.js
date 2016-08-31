@@ -3,11 +3,13 @@ import {reducer as formReducer} from 'redux-form';
 
 import register from './register';
 import session from './session';
+import surveys from './surveys';
 
 const root = combineReducers({
   form: formReducer,
   register,
-  session
+  session,
+  surveys
 });
 
 export default root;

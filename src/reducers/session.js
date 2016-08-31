@@ -1,4 +1,4 @@
-export default function(state={isSuccess: false, isLoading: false, user: null}, action) {
+export default function (state = {isSuccess: false, isLoading: false, user: null, prevPath: null}, action) {
   switch (action.type) {
     case 'LOGIN_REQUEST':
       return {
@@ -6,6 +6,7 @@ export default function(state={isSuccess: false, isLoading: false, user: null}, 
         isLoading: true
       };
     case 'LOGIN_REQUEST_SUCCESS':
+    case 'CURRENT_USER_REQUEST_SUCCESS':
       return {
         ...state,
         isLoading: false,
@@ -21,4 +22,8 @@ export default function(state={isSuccess: false, isLoading: false, user: null}, 
     default:
       return state;
   }
+};
+
+export const home = (user) => {
+  return '/surveys';
 };
