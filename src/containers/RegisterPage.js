@@ -4,6 +4,13 @@ import RegisterFormView from '../components/RegisterForm';
 import { registerRequest, registerRequestSuccess, registerRequestFail } from '../actions/register';
 
 class RegisterPage extends Component {
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props);
+    if (nextProps.isRegisterSuccess) {
+      this.props.router.push('/login');
+    }
+  }
+
   render() {
     return (
         <div className="col-md-4 col-md-offset-4">
@@ -12,6 +19,12 @@ class RegisterPage extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isRegisterSuccess: state.register.isSuccess
+  };
+};
 
 const mapDispatchToProps = () => {
   return {
@@ -31,6 +44,6 @@ const mapDispatchToProps = () => {
   }
 };
 
-RegisterPage = connect(undefined, mapDispatchToProps)(RegisterPage);
+RegisterPage = connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
 
 export default RegisterPage;
