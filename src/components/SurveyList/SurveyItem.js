@@ -1,10 +1,11 @@
 import React from 'react';
+import './SurveyItem.css';
 
 class SurveyItem extends React.Component {
   render() {
-    let { survey: { title, description } } = this.props;
+    let { survey: { title } } = this.props;
     return (
-      <div>
+      <div className="SurveyItem">
         {title}
       </div>
     );

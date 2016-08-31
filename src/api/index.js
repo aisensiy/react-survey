@@ -56,7 +56,6 @@ export const createSurvey = (email) => {
     subTitle: 'No Description',
     questions: []
   }).then(res => {
-    console.log(res);
     return db.get(res.id);
   });
 };

@@ -19,14 +19,6 @@ export const fetchSurveysRequest = email => dispatch => {
   })
 };
 
-export const createSurveyRequest = (email) => dispatch => {
-  dispatch({
-    type: 'CREATE_SURVEY_REQUEST',
-    payload: email
-  });
-  return api.createSurvey(email).then(res => dispatch(createSurveyRequestSuccess(res))).catch(err => dispatch(createSurveyRequestFail(err)));
-};
-
 export const createSurveyRequestSuccess = (res) => ({
   type: 'CREATE_SURVEY_REQUEST_SUCCESS',
   payload: res
@@ -36,6 +28,14 @@ export const createSurveyRequestFail = (err) => ({
   type: 'CREATE_SURVEY_REQUEST_FAIL',
   payload: err
 });
+
+export const createSurveyRequest = (email) => dispatch => {
+  dispatch({
+    type: 'CREATE_SURVEY_REQUEST',
+    payload: email
+  });
+  return api.createSurvey(email).then(res => dispatch(createSurveyRequestSuccess(res))).catch(err => dispatch(createSurveyRequestFail(err)));
+};
 
 export const resetCreateSurvey = () => ({
   type: 'RESET_CREATE_SURVEY'

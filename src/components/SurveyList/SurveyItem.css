@@ -1,0 +1,7 @@
+.SurveyItem {
+  padding: 10px;
+  border: 1px solid silver;
+  line-height: 1.5em;
+  margin: 15px 0;
+  justify-content: center;
+}
