@@ -5,7 +5,6 @@ import { registerRequest, registerRequestSuccess, registerRequestFail } from '..
 
 class RegisterPage extends Component {
   componentWillReceiveProps(nextProps) {
-    console.log(this.props);
     if (nextProps.isRegisterSuccess) {
       this.props.router.push('/login');
     }

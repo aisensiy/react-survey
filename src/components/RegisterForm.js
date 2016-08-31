@@ -51,7 +51,6 @@ class RegisterForm extends Component {
 }
 
 RegisterForm.propTypes = {
-  fields: PropTypes.array.isRequired,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
