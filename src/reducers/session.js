@@ -1,4 +1,6 @@
-export default function (state = {isSuccess: false, isLoading: false, user: null, prevPath: null}, action) {
+var initialState = {isSuccess: false, isLoading: false, user: null, prevPath: null};
+
+export default function (state = initialState, action) {
   switch (action.type) {
     case 'LOGIN_REQUEST':
       return {
@@ -19,6 +21,8 @@ export default function (state = {isSuccess: false, isLoading: false, user: null
         isLoading: false,
         isSuccess: false
       };
+    case 'LOGOUT_REQUEST':
+      return initialState;
     default:
       return state;
   }

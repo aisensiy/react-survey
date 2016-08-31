@@ -4,6 +4,8 @@ import App from './App';
 import RegisterPage from './containers/RegisterPage';
 import LoginPage from './containers/LoginPage';
 import UserSurveysPage from './containers/UserSurveysPage';
+import LogoutPage from './containers/LogoutPage';
+
 import { fetchCurrentUserRequest, fetchCurrentUserRequestSuccess, fetchCurrentUserRequestFail } from './actions/login';
 import { home } from './reducers/session';
 
@@ -43,6 +45,7 @@ export default function routes(store) {
       <Route path="/" component={App} onEnter={requireAuth}>
         <Route path="register" component={RegisterPage}/>
         <Route path="login" component={LoginPage}/>
+        <Route path="logout" component={LogoutPage}/>
         <Route path="surveys" component={UserSurveysPage}/>
       </Route>
   );

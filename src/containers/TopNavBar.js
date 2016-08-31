@@ -6,10 +6,10 @@ import './TopNavBar.css';
 
 class TopNavBar extends Component {
   loginView() {
-    let { current_user } = this.props.session;
+    let { currentUser } = this.props;
     return (
         <Nav pullRight>
-          <NavDropdown eventKey={3} title={current_user.nickname || ''} id="basic-nav-dropdown">
+          <NavDropdown eventKey={3} title={currentUser.username} id="basic-nav-dropdown">
             <MenuItem href="#/user">New Password</MenuItem>
             <MenuItem divider/>
             <MenuItem href="#/logout">Logout</MenuItem>
@@ -28,6 +28,7 @@ class TopNavBar extends Component {
   }
 
   render() {
+    let { currentUser } = this.props;
     return (
         <Navbar className="TopNavBar">
           <Navbar.Header>
@@ -39,7 +40,7 @@ class TopNavBar extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            {this.props.session.current_user ? this.loginView() : this.unLoginView()}
+            {currentUser ? this.loginView() : this.unLoginView()}
           </Navbar.Collapse>
         </Navbar>
     )
@@ -48,7 +49,7 @@ class TopNavBar extends Component {
 
 var mapStateToProps = (state) => {
   return {
-    session: {}
+    currentUser: state.session.user
   }
 };
 

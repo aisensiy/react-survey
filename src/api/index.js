@@ -35,6 +35,10 @@ export const login = (email, password) => {
   });
 };
 
+export const logout = () => {
+  return db.remove('session');
+};
+
 export const fetchCurrentUser = () => {
   return db.get('session');
 };

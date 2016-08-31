@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import NewSurvey from '../containers/NewSurvey';
 import SurveyListView from '../components/SurveyList/SurveyList';
 import { fetchSurveysRequest } from '../actions/surveys';
 
