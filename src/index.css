@@ -4,3 +4,7 @@ body {
   font-family: sans-serif;
   background-color: #f9f9f9;
 }
+
+html, body {
+  height: 100%;
+}

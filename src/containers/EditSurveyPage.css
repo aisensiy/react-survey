@@ -1,5 +1,5 @@
 .EditSurveyPage .Sidebar {
-  padding-top: 10px;
+  padding: 0;
   border-left: 1px solid #ccc;
   background-color: #fff;
 }
@@ -7,4 +7,5 @@
 .EditSurveyPage .EditPanel {
   border: 1px solid #ccc;
   position: relative;
+  background-color: #fff;
 }

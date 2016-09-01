@@ -1,0 +1,14 @@
+.QuestionListPanel {
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.QuestionList {
+  overflow: hidden;
+}
+
+.QuestionList > a {
+  margin: 1%;
+  float: none;
+  width: 48%;
+}

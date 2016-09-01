@@ -1,2 +1,15 @@
-.EditTab {
+.EditTab .nav {
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.EditTab .nav > li > a {
+  padding: 5px 10px;
+}
+
+.EditTab .nav > li {
+  display: inline-block;
+  float: none;
 }

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+
 var classNames = require('classnames');
 
 import './EditTab.css';
@@ -11,8 +12,10 @@ class EditTab extends Component {
           <ul className="nav nav-pills">
             {tabs.map(tab => {
               return (
-                  <TabLink active={activeTab === tab.type}
-                           onClick={() => { onUpdateTab(tab.type); }}>
+                  <TabLink
+                      key={tab.type}
+                      active={activeTab === tab.type}
+                      onClick={() => { onUpdateTab(tab.type); }}>
                     {tab.text}
                   </TabLink>
               );
@@ -20,7 +23,9 @@ class EditTab extends Component {
           </ul>
           {tabs.map(tab => {
             return (
-                <TabPanel active={activeTab === tab.type}>
+                <TabPanel
+                    active={activeTab === tab.type}
+                    key={tab.type}>
                   {tab.panel}
                 </TabPanel>
             );
@@ -45,7 +50,7 @@ const TabLink = ({ active, children, onClick }) => {
   let tabClass = classNames('tab-item', {active: active});
   return (
       <li role="presentation" className={tabClass}>
-        <a href="#" onClick={e => {
+        <a className="btn btn-sm btn-default" href="#" onClick={e => {
           e.preventDefault();
           onClick();
         }}>
