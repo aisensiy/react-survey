@@ -4,18 +4,20 @@ import SurveyPreview from './SurveyPreview';
 import EditTab from './EditTab';
 import EditFooter from './EditFooter';
 
+import './EditSurveyPage.css';
+
 class EditSurveyPage extends React.Component {
   render() {
     return (
-      <div>
-        <div className="row">
+      <div className="EditSurveyPage">
+        <div>
           <SurveyNavBar/>
         </div>
-        <div className="row">
+        <div className="clearfix EditPanel">
           <div className="col-md-8">
             <SurveyPreview/>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 Sidebar">
             <div>
               <EditTab/>
               <EditFooter/>

@@ -1,9 +1,13 @@
 import React from 'react';
+import PanelButton from './PanelButton';
+import './EditFooter.css';
 
 class EditFooter extends React.Component {
   render() {
     return (
-      <div />
+      <div className="EditFooter">
+        <PanelButton>Save Survey</PanelButton>
+      </div>
     );
   }
 }
