@@ -3,7 +3,7 @@ import React from 'react';
 class SurveyPreview extends React.Component {
   render() {
     return (
-      <div />
+      <div>Survey Preview</div>
     );
   }
 }

@@ -52,3 +52,9 @@ export default function routes(store) {
       </Route>
   );
 }
+
+export const Path = {
+  editSurvey(survey) {
+    return `/surveys/${survey._id}/edit`;
+  }
+};

@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router';
+import { Path } from '../../routes';
 import './SurveyItem.css';
 
 class SurveyItem extends React.Component {
   render() {
-    let { survey: { title } } = this.props;
+    let { survey, survey: { title } } = this.props;
     return (
       <div className="SurveyItem">
-        {title}
+        <Link to={Path.editSurvey(survey)}>{title}</Link>
       </div>
     );
   }
