@@ -1,15 +1,39 @@
 import React from 'react';
-import SurveyTitle from './SurveyTitle';
 import QuestionList from './QuestionList';
 
 import './SurveyPreview.css';
 
 class SurveyPreview extends React.Component {
+  renderError() {
+    return <div>Error!</div>
+  }
+
+  renderLoading() {
+    return <div>Loading...</div>
+  }
+
   render() {
+    let { survey, isLoading, error } = this.props;
+
+    if (isLoading) {
+      return this.renderLoading();
+    }
+
+    if (error) {
+      return this.renderError();
+    }
+
+    if (!survey) {
+      return <div/>;
+    }
+
     return (
       <div className="SurveyPreview">
         <form>
-          <SurveyTitle />
+          <header>
+            <h1>{survey.title}</h1>
+            <p>{survey.subTitle}</p>
+          </header>
           <QuestionList />
           <div className="form-group">
             <button className="btn btn-primary" type="button">Submit</button>
@@ -20,7 +44,10 @@ class SurveyPreview extends React.Component {
   }
 }
 
-SurveyPreview.propTypes = {};
-SurveyPreview.defaultProps = {};
+SurveyPreview.propTypes = {
+  survey: React.PropTypes.object,
+  isLoading: React.PropTypes.bool.isRequired,
+  error: React.PropTypes.object
+};
 
 export default SurveyPreview;

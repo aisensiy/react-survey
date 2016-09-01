@@ -8,6 +8,24 @@ export const tabTypes = {
 
 const surveyReducer = (state={survey: null, isLoading: false, error: null}, action) => {
   switch (action.type) {
+    case 'FETCH_SURVEY_REQUEST':
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      };
+    case 'FETCH_SURVEY_REQUEST_SUCCESS':
+      return {
+        survey: action.payload,
+        isLoading: false,
+        error: null
+      };
+    case 'FETCH_SURVEY_REQUEST_FAIL':
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
     default:
       return state;
   }
@@ -26,3 +44,16 @@ export default combineReducers({
   survey: surveyReducer,
   tab: tabReducer
 });
+
+
+export const getSurvey = (state) => {
+  return state.survey.survey;
+};
+
+export const getFetchStatus = (state) => {
+  return state.survey.isLoading;
+};
+
+export const getFetchError = (state) => {
+  return state.survey.error;
+};

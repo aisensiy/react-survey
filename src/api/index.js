@@ -63,3 +63,7 @@ export const createSurvey = (email) => {
     return db.get(res.id);
   });
 };
+
+export const fetchSurvey = (surveyId) => {
+  return db.get(surveyId);
+};

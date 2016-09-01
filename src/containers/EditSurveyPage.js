@@ -1,13 +1,32 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+
 import SurveyNavBar from './SurveyNavBar';
 import SurveyPreview from './SurveyPreview';
 import EditTab from './EditTab';
 import EditFooter from './EditFooter';
 
+import { fetchSurvey } from '../actions/edit_survey'
+
 import './EditSurveyPage.css';
 
 class EditSurveyPage extends React.Component {
+  loadData() {
+    this.props.fetchSurvey(this.props.surveyId);
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.surveyId !== prevProps.surveyId) {
+      this.loadData();
+    }
+  }
+
+
   render() {
     return (
         <div className="EditSurveyPage">
@@ -30,7 +49,8 @@ class EditSurveyPage extends React.Component {
   }
 }
 
-EditSurveyPage.propTypes = {};
-EditSurveyPage.defaultProps = {};
-
-export default EditSurveyPage;
+export default connect((state, { params }) => ({
+  surveyId: params.surveyId
+}), {
+  fetchSurvey
+})(EditSurveyPage);
