@@ -5,6 +5,7 @@ import RegisterPage from './containers/RegisterPage';
 import LoginPage from './containers/LoginPage';
 import UserSurveysPage from './containers/UserSurveysPage';
 import LogoutPage from './containers/LogoutPage';
+import EditSurveyPage from './containers/EditSurveyPage';
 
 import { fetchCurrentUserRequest, fetchCurrentUserRequestSuccess, fetchCurrentUserRequestFail } from './actions/login';
 import { home } from './reducers/session';
@@ -47,6 +48,7 @@ export default function routes(store) {
         <Route path="login" component={LoginPage}/>
         <Route path="logout" component={LogoutPage}/>
         <Route path="surveys" component={UserSurveysPage}/>
+        <Route path="surveys/:surveyId/edit" component={EditSurveyPage}/>
       </Route>
   );
 }

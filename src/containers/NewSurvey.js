@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import NewSurveyView from '../components/NewSurvey';
 import { createSurveyRequest, resetCreateSurvey } from '../actions/surveys';
+import { newSurveyRedirectPath } from '../reducers/create_survey';
 
 class NewSurvey extends React.Component {
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.isSuccess) {
+      this.props.resetCreateSurvey();
+      this.props.router.push(newSurveyRedirectPath(this.props.newSurvey));
+    }
   }
 
   render() {
@@ -33,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewSurvey);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewSurvey));
