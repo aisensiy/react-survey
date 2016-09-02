@@ -53,12 +53,10 @@ export const fetchUserSurveys = (email) => {
   });
 };
 
-export const createSurvey = (email) => {
+export const createSurvey = (email, initSurvey) => {
   return db.put({
-    _id: `${email}-survey-${v4()}`,
-    title: "No Title",
-    subTitle: 'No Description',
-    questions: []
+    ...initSurvey,
+    _id: `${email}-survey-${v4()}`
   }).then(res => {
     return db.get(res.id);
   });

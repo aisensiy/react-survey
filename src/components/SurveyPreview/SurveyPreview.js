@@ -1,5 +1,6 @@
 import React from 'react';
 import QuestionList from './QuestionList';
+import SurveyHeader from './SurveyHeader';
 
 import './SurveyPreview.css';
 
@@ -30,11 +31,8 @@ class SurveyPreview extends React.Component {
     return (
       <div className="SurveyPreview">
         <form>
-          <header>
-            <h1>{survey.title}</h1>
-            <p>{survey.subTitle}</p>
-          </header>
-          <QuestionList />
+          <SurveyHeader title={survey.title} subTitle={survey.subTitle}/>
+          <QuestionList questions={survey.questions} question_order={survey.question_order}/>
           <div className="form-group">
             <button className="btn btn-primary" type="button">Submit</button>
           </div>

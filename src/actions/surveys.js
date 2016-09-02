@@ -1,4 +1,5 @@
 import * as api from '../api';
+import initSurvey from '../constants/InitSurvey';
 
 export const fetchSurveysRequest = email => dispatch => {
   dispatch({
@@ -32,9 +33,10 @@ export const createSurveyRequestFail = (err) => ({
 export const createSurveyRequest = (email) => dispatch => {
   dispatch({
     type: 'CREATE_SURVEY_REQUEST',
-    payload: email
+    email,
+    payload: initSurvey
   });
-  return api.createSurvey(email).then(res => dispatch(createSurveyRequestSuccess(res))).catch(err => dispatch(createSurveyRequestFail(err)));
+  return api.createSurvey(email, initSurvey).then(res => dispatch(createSurveyRequestSuccess(res))).catch(err => dispatch(createSurveyRequestFail(err)));
 };
 
 export const resetCreateSurvey = () => ({
