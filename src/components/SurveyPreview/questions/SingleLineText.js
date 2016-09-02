@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from "react";
 
 class SingleLineText extends Component {
   render() {
-    const { title, placeholder, name, id } = this.props;
+    const { title, placeholder, _id } = this.props;
     return (
         <div>
           <h3 className="question-title">{title}</h3>
           <div className="form-group">
-            <input type="text" className="form-input" placeholder={placeholder} name={id}/>
+            <input type="text" className="form-control" placeholder={placeholder} name={_id} disabled/>
           </div>
         </div>
     );
@@ -15,9 +15,9 @@ class SingleLineText extends Component {
 }
 
 SingleLineText.propTypes = {
-  title: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  title: PropTypes.string,
+  placeholder: PropTypes.string,
+  _id: PropTypes.string
 };
 
 export default SingleLineText;

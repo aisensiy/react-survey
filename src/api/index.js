@@ -65,3 +65,9 @@ export const createSurvey = (email, initSurvey) => {
 export const fetchSurvey = (surveyId) => {
   return db.get(surveyId);
 };
+
+export const deleteSurvey = surveyId => db.remove(surveyId);
+
+export const updateSurvey = (survey) => {
+  return db.put(survey);
+};

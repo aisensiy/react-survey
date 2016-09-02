@@ -4,7 +4,7 @@ class PanelButton extends React.Component {
   render() {
     let { className, ...rest } = this.props;
     return (
-      <a className={`btn btn-sm btn-primary ${className || ''}`} {...rest} href="#">{this.props.children}</a>
+      <a type="button" className={`btn btn-sm btn-primary ${className || ''}`} {...rest}>{this.props.children}</a>
     );
   }
 }

@@ -1,19 +1,15 @@
 import { combineReducers } from 'redux';
 import { InitQuestions } from '../constants/Questions';
-
-export const tabTypes = {
-  'QUESTIONS_TAB': 'QUESTIONS_TAB',
-  'EDIT_QUESTION_TAB': 'EDIT_QUESTION_TAB',
-  'EDIT_SURVEY_TAB': 'EDIT_SURVEY_TAB'
-};
+import tabTypes from '../constants/TabTypes';
 
 export const assembleSurvey = (survey) => {
-  const { title, subTitle, questions, question_order } = survey;
-  const orderQuestions = question_order.map(questionId => questions[questionId]);
-
+  const { _id, title, subTitle, questions } = survey;
+  const orderQuestions = survey.question_order.map(questionId => questions[questionId]);
   return {
+    ...survey.original,
     title,
     subTitle,
+    _id,
     questions: [...orderQuestions]
   };
 };
@@ -25,16 +21,19 @@ export const normalizeSurvey = (survey) => {
   });
   let question_order = survey.questions.map(question => question._id);
   return {
+    _id: survey._id,
     title: survey.title,
     subTitle: survey.subTitle,
     questions: questions,
     question_order: question_order,
-    current_question_id: ''
+    current_question_id: '',
+    original: {
+      _rev: survey._rev
+    }
   }
 };
 
-
-const surveyReducer = (state = {survey: null, isLoading: false, error: null}, action) => {
+const surveyReducer = (state = {survey: {_id: '', questions: {}, question_order: []}, isLoading: false, error: null}, action) => {
   switch (action.type) {
     case 'FETCH_SURVEY_REQUEST':
       return {
@@ -73,6 +72,61 @@ const surveyReducer = (state = {survey: null, isLoading: false, error: null}, ac
   }
 };
 
+const updateReducer = (state = { isLoading: false, error: '', isSuccess: false }, action) => {
+  switch( action.type) {
+    case 'UPDATE_SURVERY_REQUEST':
+      return {
+        isLoading: true, 
+        error: '',
+        isSuccess: false
+      };
+    case 'UPDATE_SURVEY_REQUEST_SUCCESS':
+      return {
+        isLoading: false,
+        error: '',
+        isSuccess: true
+      };
+    case 'UPDATE_SURVEY_REQUEST_FAIL':
+      return {
+        isLoading: false,
+        error: action.payload,
+        isSuccess: false
+      };
+    default:
+      return state;
+  }
+};
+
+const initDeleteState = { isLoading: false, error: '', isSuccess: false };
+
+const deleteReducer = (state = initDeleteState, action) => {
+  switch( action.type) {
+    case 'DELETE_SURVERY_REQUEST':
+      return {
+        isLoading: true,
+        error: '',
+        isSuccess: false
+      };
+    case 'DELETE_SURVEY_REQUEST_SUCCESS':
+      return {
+        isLoading: false,
+        error: '',
+        isSuccess: true
+      };
+    case 'DELETE_SURVEY_REQUEST_FAIL':
+      return {
+        isLoading: false,
+        error: action.payload,
+        isSuccess: false
+      };
+    case 'RESET_DELETE_SURVEY_REQUEST':
+      return initDeleteState;
+    default:
+      return state;
+  }
+};
+ 
+
 const tabReducer = (state = tabTypes.QUESTIONS_TAB, action) => {
   switch (action.type) {
     case 'EDIT_SURVEY_SWITCH_TAB':
@@ -84,7 +138,9 @@ const tabReducer = (state = tabTypes.QUESTIONS_TAB, action) => {
 
 export default combineReducers({
   survey: surveyReducer,
-  tab: tabReducer
+  tab: tabReducer,
+  updateSurvey: updateReducer,
+  deleteSurvey: deleteReducer
 });
 
 export const getSurvey = (state) => {

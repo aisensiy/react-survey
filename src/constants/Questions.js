@@ -1,6 +1,6 @@
 import { v4 } from 'node-uuid';
 
-export const QuestionTypes = [{
+export const QuestionDescriptions = [{
   text: 'Single Line Text',
   type: 'SINGLE_LINE_TEXT'
 }, {
@@ -16,6 +16,14 @@ export const QuestionTypes = [{
   text: 'Dropdown',
   type: 'DROPDOWN'
 }];
+
+export const QuestionTypes = {
+  SINGLE_LINE_TEXT: 'SINGLE_LINE_TEXT',
+  MUTLI_LINE_TEXT: 'MUTLI_LINE_TEXT',
+  MULTI_CHOICE: 'MULTI_CHOICE',
+  CHECKBOXES: 'CHECKBOXES',
+  DROPDOWN: 'DROPDOWN'
+};
 
 export const InitQuestions = {
   'MULTI_CHOICE': () => ({

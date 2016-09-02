@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import SurveyNavBar from './SurveyNavBar';
-import SurveyPreview from './SurveyPreview';
+import SurveyPreview from './SurveyPreview/SurveyPreview';
 import EditTab from './EditTab';
 import EditFooter from './EditFooter';
 

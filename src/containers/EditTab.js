@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import EditTabView from '../components/EditPanel/EditTab';
 
 import { switchTab } from '../actions/edit_survey';
-import { tabTypes } from '../reducers/edit_survey';
+import tabTypes from '../constants/TabTypes';
 import QuestionListPanel from './QuestionListPanel';
 import EditQuestionPanel from './EditQuestionPanel';
 import EditSurveyPanel from './EditSurveyPanel';

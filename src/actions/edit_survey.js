@@ -1,4 +1,5 @@
 import * as api from '../api';
+import tabTypes from '../constants/TabTypes';
 
 export const switchTab = (tab) => ({
   type: 'EDIT_SURVEY_SWITCH_TAB',
@@ -24,6 +25,48 @@ export const fetchSurvey = surveyId => dispatch => {
   }).catch(err => {
     dispatch({
       type: 'FETCH_SURVEY_REQUEST_FAIL',
+      payload: err
+    });
+  });
+};
+
+export const activeQuestion = questionId => dispatch => {
+  dispatch({
+    type: 'ACTIVE_QUESTION',
+    questionId
+  });
+  dispatch(switchTab(tabTypes.EDIT_QUESTION_TAB));
+};
+
+export const deleteSurvey = surveyId => dispatch => {
+  dispatch({
+    type: 'DELETE_SURVEY_REQUEST',
+    surveyId
+  });
+  api.deleteSurvey(surveyId).then(() => {
+    dispatch({
+      type: 'DELETE_SURVEY_REQUEST_SUCCESS'
+    });
+  }).catch((err) => {
+    dispatch({
+      type: 'DELETE_SURVEY_REQUEST_FAIL',
+      payload: err
+    });
+  });
+};
+
+export const updateSurvey = survey => dispatch => {
+  dispatch({
+    type: 'UPDATE_SURVEY_REQUEST',
+    payload: survey
+  });
+  api.updateSurvey(survey).then(() => {
+    dispatch({
+      type: 'UPDATE_SURVEY_REQUEST_SUCCESS'
+    });
+  }).catch((err) => {
+    dispatch({
+      type: 'UPDATE_SURVEY_REQUEST_FAIL',
       payload: err
     });
   });
