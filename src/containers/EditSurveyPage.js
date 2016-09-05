@@ -9,6 +9,8 @@ import EditFooter from './EditFooter';
 
 import { fetchSurvey } from '../actions/edit_survey'
 
+import { AutoAffix } from 'react-overlays';
+
 import './EditSurveyPage.css';
 
 class EditSurveyPage extends React.Component {
@@ -38,10 +40,12 @@ class EditSurveyPage extends React.Component {
               <SurveyPreview/>
             </div>
             <div className="col-md-4 Sidebar">
-              <div>
-                <EditTab/>
-                <EditFooter/>
-              </div>
+              <AutoAffix>
+                <div>
+                  <EditTab/>
+                  <EditFooter/>
+                </div>
+              </AutoAffix>
             </div>
           </div>
         </div>
