@@ -1,0 +1,13 @@
+.OptionField {
+  margin: 5px 0px;
+}
+
+.OptionField > div {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.OptionField > input {
+  width: 65%;
+  display: inline-block;
+}

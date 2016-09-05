@@ -71,3 +71,11 @@ export const updateSurvey = survey => dispatch => {
     });
   });
 };
+
+export const updateQuestion = (qid, params) => {
+  return {
+    type: 'EDIT_SURVEY_UPDATE_QUESTION',
+    questionId: qid,
+    payload: params
+  };
+};

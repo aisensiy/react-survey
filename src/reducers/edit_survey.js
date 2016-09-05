@@ -55,7 +55,6 @@ const surveyReducer = (state = {survey: {_id: '', questions: {}, question_order:
       };
     case 'EDIT_SURVEY_ADD_QUESTION':
       let newQuestion = (InitQuestions[action.questionType])();
-      console.log(newQuestion);
       return {
         ...state,
         survey: {
@@ -65,6 +64,28 @@ const surveyReducer = (state = {survey: {_id: '', questions: {}, question_order:
             [newQuestion._id]: newQuestion
           },
           question_order: [...state.survey.question_order, newQuestion._id]
+        }
+      };
+    case 'ACTIVE_QUESTION':
+      return {
+        ...state,
+        survey: {
+          ...state.survey,
+          current_question_id: action.questionId
+        }
+      };
+    case 'EDIT_SURVEY_UPDATE_QUESTION':
+      return {
+        ...state,
+        survey: {
+          ...state.survey,
+          questions: {
+            ...state.survey.questions,
+            [action.questionId]: {
+              ...state.survey.questions[action.questionId],
+              ...action.payload
+            }
+          }
         }
       };
     default:
@@ -153,4 +174,10 @@ export const getFetchStatus = (state) => {
 
 export const getFetchError = (state) => {
   return state.survey.error;
+};
+
+export const getActiveQuestion = (state) => {
+  let activeQuestionId = state.survey.survey.current_question_id;
+  let activeQuestion = state.survey.survey.questions[activeQuestionId];
+  return activeQuestion ? activeQuestion : {};
 };
