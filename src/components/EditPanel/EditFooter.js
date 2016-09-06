@@ -15,7 +15,10 @@ class EditFooter extends React.Component {
     return (
       <div className="EditFooter">
         <PanelButton
-            onClick={this.save.bind(this)}>Save Survey</PanelButton>
+            onClick={this.save.bind(this)}>
+          {this.props.isUpdateSuccess ? <span className="glyphicon glyphicon-ok"></span>  : ''}
+          { ' ' } Save Survey
+        </PanelButton>
         { ' ' }
         <PanelButton
             className="btn btn-sm btn-danger"

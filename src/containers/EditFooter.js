@@ -27,6 +27,7 @@ const mapStateToProps = (state, { router }) => {
   return {
     survey: assembleSurvey(getSurvey(state.edit_survey)),
     isDeleteSuccess: state.edit_survey.deleteSurvey.isSuccess,
+    isUpdateSuccess: state.edit_survey.updateSurvey.isSuccess,
     push: router.push
   }
 };
