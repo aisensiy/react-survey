@@ -21,3 +21,11 @@
 .SurveyPreview .question.active {
   background-color: #f7f7f9;
 }
+
+.SurveyPreview .question .btn-group {
+  visibility: hidden;
+}
+
+.SurveyPreview .question.active .btn-group {
+  visibility: visible;
+}

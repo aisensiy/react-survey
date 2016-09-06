@@ -28,12 +28,12 @@ class QuestionPreviewWrapper extends React.Component {
   render() {
     const { question, onActive, onRemove, isActive, onClone, onUp, onDown, showUp, showDown } = this.props;
     var QuestionComponent = questionMap[question.type](question);
-    var classNames = isActive ? 'active question' : 'question';
+    var classNames = isActive ? 'active question clearfix' : 'question clearfix';
 
     return (
         <div onClick={() => { onActive(question._id) }} className={classNames}>
           {QuestionComponent}
-          <div className="btn-group">
+          <div className="btn-group pull-right">
             {showUp ?
                 <button
                     type="button"
