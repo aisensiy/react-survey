@@ -44,6 +44,18 @@ const mapDispatchToProps = (dispatch) => {
         questionId
       });
     },
+    onUp: (questionId) => {
+      return dispatch({
+        type: 'SORT_QUESTION_UP',
+        questionId
+      })
+    },
+    onDown: (questionId) => {
+      return dispatch({
+        type: 'SORT_QUESTION_DOWN',
+        questionId
+      });
+    },
     onSort: (sortList) => {
       return (dispatch({
         type: 'SORT_QUESTION',

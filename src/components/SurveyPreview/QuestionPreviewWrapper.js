@@ -26,7 +26,7 @@ const questionMap = {
 
 class QuestionPreviewWrapper extends React.Component {
   render() {
-    const { question, onActive, onRemove, isActive } = this.props;
+    const { question, onActive, onRemove, isActive, onClone, onUp, onDown, showUp, showDown } = this.props;
     var QuestionComponent = questionMap[question.type](question);
     var classNames = isActive ? 'active question' : 'question';
 
@@ -34,11 +34,34 @@ class QuestionPreviewWrapper extends React.Component {
         <div onClick={() => { onActive(question._id) }} className={classNames}>
           {QuestionComponent}
           <div className="btn-group">
-            <button className="btn btn-sm" onClick={(e) => {
-              e.stopPropagation();
-              onRemove(question.id);
-            }}>delete</button>
-            <button className="btn btn-sm">copy</button>
+            {showUp ?
+                <button
+                    type="button"
+                    className="btn btn-sm btn-primary"
+                    onClick={(e) => {
+                      onUp(question._id);
+                    }}>
+                  <span className="glyphicon glyphicon-arrow-up"></span>
+                </button> : ''
+            }
+            {showDown ? <button
+                type="button"
+                className="btn btn-sm btn-primary"
+                onClick={() => onDown(question._id)}>
+              <span className="glyphicon glyphicon-arrow-down"></span>
+            </button> : ''}
+            <button
+                type="button"
+                className="btn btn-sm btn-primary"
+                onClick={(e) => { e.stopPropagation(); onClone(question._id); }}>
+              <span className="glyphicon glyphicon-plus"></span>
+            </button>
+            <button
+                type="button"
+                className="btn btn-sm btn-primary"
+                onClick={() => onRemove(question._id)}>
+              <span className="glyphicon glyphicon-minus"></span>
+            </button>
           </div>
         </div>
     )
