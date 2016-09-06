@@ -7,8 +7,9 @@
   border: 1px solid #ccc;
   position: relative;
   background-color: #fff;
+  display: flex;
 }
 
-.EditSurveyPage .EditPanel > div {
+.EditSurveyPage .EditPanel > .Main {
   border-right: 1px solid #ccc;
 }
