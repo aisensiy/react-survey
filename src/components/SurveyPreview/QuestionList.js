@@ -3,7 +3,7 @@ import QuestionWrapper from './QuestionPreviewWrapper';
 
 class QuestionList extends React.Component {
   render() {
-    let { question_order, questions, active_question_id } = this.props;
+    let { question_order, questions, current_question_id } = this.props;
     let orderedQuestions = question_order.map(id => questions[id]);
     return (
       <ul className="list-unstyled">
@@ -12,7 +12,7 @@ class QuestionList extends React.Component {
               <li key={question._id}>
                 <QuestionWrapper
                     question={question}
-                    isActive={active_question_id === question._id}
+                    isActive={current_question_id === question._id}
                     onActive={() => this.props.onActive(question._id)}
                     onRemove={() => this.props.onRemove(question._id)}/>
               </li>

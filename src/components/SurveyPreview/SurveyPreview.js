@@ -13,7 +13,7 @@ class SurveyPreview extends React.Component {
   }
 
   render() {
-    let { survey, isLoading, error } = this.props;
+    let { survey, isLoading, error, isHeaderActive, onHeaderActive } = this.props;
 
     if (isLoading) {
       return this.renderLoading();
@@ -30,7 +30,11 @@ class SurveyPreview extends React.Component {
     return (
       <div className="SurveyPreview">
         <form>
-          <SurveyHeader title={survey.title} subTitle={survey.subTitle}/>
+          <SurveyHeader
+              title={survey.title}
+              subTitle={survey.subTitle}
+              isActive={isHeaderActive}
+              onActive={onHeaderActive}/>
           {this.props.children}
           <div className="form-group">
             <button className="btn btn-primary" type="button">Submit</button>
@@ -44,7 +48,9 @@ class SurveyPreview extends React.Component {
 SurveyPreview.propTypes = {
   survey: React.PropTypes.object,
   isLoading: React.PropTypes.bool.isRequired,
-  error: React.PropTypes.object
+  error: React.PropTypes.object,
+  isHeaderActive: React.PropTypes.bool,
+  onHeaderActive: React.PropTypes.func
 };
 
 export default SurveyPreview;

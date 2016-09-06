@@ -2,9 +2,9 @@ import React from 'react';
 
 class SurveyHeader extends React.Component {
   render() {
-    let { title, subTitle } = this.props;
+    let { title, subTitle, isActive, onActive } = this.props;
     return (
-      <header>
+      <header className={isActive ? 'active' : ''} onClick={onActive}>
         <h3>{title}</h3>
         <p>{subTitle}</p>
       </header>

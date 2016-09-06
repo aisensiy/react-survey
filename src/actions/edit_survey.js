@@ -35,7 +35,10 @@ export const activeQuestion = questionId => dispatch => {
     type: 'ACTIVE_QUESTION',
     questionId
   });
-  dispatch(switchTab(tabTypes.EDIT_QUESTION_TAB));
+  if (questionId === 'header')
+    dispatch(switchTab(tabTypes.EDIT_SURVEY_TAB));
+  else
+    dispatch(switchTab(tabTypes.EDIT_QUESTION_TAB));
 };
 
 export const deleteSurvey = surveyId => dispatch => {
@@ -76,6 +79,13 @@ export const updateQuestion = (qid, params) => {
   return {
     type: 'EDIT_SURVEY_UPDATE_QUESTION',
     questionId: qid,
+    payload: params
+  };
+};
+
+export const updateSurveyHeader = (params) => {
+  return {
+    type: 'EDIT_SURVEY_UPDATE_SURVEY_HEADER',
     payload: params
   };
 };

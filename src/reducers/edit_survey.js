@@ -66,6 +66,14 @@ const surveyReducer = (state = {survey: {_id: '', questions: {}, question_order:
           question_order: [...state.survey.question_order, newQuestion._id]
         }
       };
+    case 'EDIT_SURVEY_UPDATE_SURVEY_HEADER':
+      return {
+        ...state,
+        survey: {
+          ...state.survey,
+          ...action.payload
+        }
+      };
     case 'ACTIVE_QUESTION':
       return {
         ...state,
@@ -180,4 +188,8 @@ export const getActiveQuestion = (state) => {
   let activeQuestionId = state.survey.survey.current_question_id;
   let activeQuestion = state.survey.survey.questions[activeQuestionId];
   return activeQuestion ? activeQuestion : {};
+};
+
+export const isHeaderActive = (state) => {
+  return state.survey.survey.current_question_id === 'header';
 };
