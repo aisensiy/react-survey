@@ -62,6 +62,13 @@ export const createSurvey = (email, initSurvey) => {
   });
 };
 
+export const saveResult = (surveyId, result) => {
+  return db.put({
+    _id: `${surveyId}-${newId()}`,
+    ...result
+  });
+};
+
 export const normalizeSurvey = (survey) => {
   let questions = {};
   survey.questions.forEach(question => {

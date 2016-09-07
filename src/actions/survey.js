@@ -26,4 +26,15 @@ export const submitResult = (surveyId, result) => dispatch => {
     surveyId,
     payload: result
   });
+
+  return api.saveResult(surveyId, result).then(() => {
+    dispatch({
+      type: Survey.SUBMIT_SURVEY_SUCCESS
+    });
+  }).catch((err) => {
+    dispatch({
+      type: Survey.SUBMIT_SURVEY_FAIL,
+      payload: err
+    });
+  });
 };

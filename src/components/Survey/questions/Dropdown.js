@@ -9,6 +9,7 @@ class MultipleChoice extends Component {
           <h3 className="question-title">{title}</h3>
           <div className="form-group">
             <Field component="select" className="form-control" name={_id}>
+              <option></option>
               {options.map((option, index) => {
                 return (
                     <option value={option._id}>{option.content}</option>

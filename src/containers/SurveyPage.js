@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Survey from '../components/Survey/Survey';
 import QuestionList from '../components/SurveyPreview/QuestionList';
-import { getSurvey, getFetchError, getFetchStatus } from '../reducers/survey';
+import { getSurvey, getFetchError, getFetchStatus, getSubmitStatus } from '../reducers/survey';
 import { submitResult, fetchSurvey } from '../actions/survey';
 import './SurveyPage.css';
 
@@ -38,13 +38,16 @@ const mapStateToProps = (state, { params }) => {
     survey: getSurvey(state.survey),
     isLoading: getFetchStatus(state.survey),
     error: getFetchError(state.survey),
-    surveyId: params.surveyId
+    surveyId: params.surveyId,
+    isSuccess: getSubmitStatus(state.survey)
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: bindActionCreators(submitResult, dispatch),
+    onSubmit: (surveyId) => (values, dispatch) => {
+      return dispatch(submitResult(surveyId, values));
+    },
     fetchSurvey: bindActionCreators(fetchSurvey, dispatch)
   };
 };
