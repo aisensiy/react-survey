@@ -144,7 +144,8 @@ const surveyReducer = (state = {
   }
 };
 
-const updateReducer = (state = {isLoading: false, error: '', isSuccess: false}, action) => {
+let initialUpdateState = {isLoading: false, error: '', isSuccess: false};
+const updateReducer = (state = initialUpdateState, action) => {
   switch (action.type) {
     case 'UPDATE_SURVERY_REQUEST':
       return {
@@ -164,6 +165,8 @@ const updateReducer = (state = {isLoading: false, error: '', isSuccess: false}, 
         error: action.payload,
         isSuccess: false
       };
+    case 'FETCH_SURVEY_REQUEST_SUCCESS':
+      return initialUpdateState;
     default:
       return state;
   }

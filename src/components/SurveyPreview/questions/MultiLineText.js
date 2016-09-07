@@ -16,8 +16,7 @@ class MultipleLineText extends Component {
 
 MultipleLineText.propTypes = {
   title: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired
 };
 
 export default MultipleLineText;
