@@ -64,8 +64,8 @@ export const createSurvey = (email, initSurvey) => {
 
 export const saveResult = (surveyId, result) => {
   return db.put({
-    _id: `${surveyId}-${newId()}`,
-    ...result
+    _id: `result-${surveyId}-${newId()}`,
+    result
   });
 };
 

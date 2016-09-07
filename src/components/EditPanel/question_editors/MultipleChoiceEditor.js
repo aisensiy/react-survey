@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from "react";
 import OptionField from './OptionField';
-import ReactDOM from "react-dom";
 import newId  from '../../../util/idGenerator';
 
 class MultipleChoiceEditor extends Component {
@@ -34,7 +33,7 @@ class MultipleChoiceEditor extends Component {
                     canRemove={index !== 0}
                     key={option._id}
                     content={option.content}
-                    ref={(input) => this.inputs[option._id] = input}
+                    ref={(input) => { this.inputs[option._id] = input }}
                     onChange={(e) => {
                       this.props.updateQuestion(_id, {
                         options: [

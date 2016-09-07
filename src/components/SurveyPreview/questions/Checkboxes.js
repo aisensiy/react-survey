@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 
 class MultipleChoice extends Component {
   render() {
-    const { title, options, id } = this.props;
+    const { title, options, _id } = this.props;
     return (
         <div>
           <h3 className="question-title">{title}</h3>
@@ -11,7 +11,7 @@ class MultipleChoice extends Component {
             return (
                 <div className="checkbox" key={index}>
                   <label>
-                    <input type="checkbox" disabled name={`${id}[]`} value={option.id}/>
+                    <input type="checkbox" disabled name={`${_id}[]`} value={option._id}/>
                     {option.content}
                   </label>
                 </div>

@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from "react";
-import ReactDOM from "react-dom";
 
 class TextEditor extends Component {
   update() {

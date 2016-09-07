@@ -20,7 +20,7 @@ class EditSurveyPanel extends React.Component {
               type="text"
               className="form-control"
               value={title}
-              ref={(input) => this.title = input}
+              ref={(input) => { this.title = input }}
               onChange={this.update.bind(this)}/>
         </div>
         <div className="form-group">
@@ -28,7 +28,7 @@ class EditSurveyPanel extends React.Component {
           <textarea
               className="form-control"
               value={subTitle}
-              ref={input => this.subTitle = input}
+              ref={input => { this.subTitle = input }}
               onChange={this.update.bind(this)}></textarea>
         </div>
       </div>

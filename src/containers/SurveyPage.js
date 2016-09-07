@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Survey from '../components/Survey/Survey';
-import QuestionList from '../components/SurveyPreview/QuestionList';
 import { getSurvey, getFetchError, getFetchStatus, getSubmitStatus } from '../reducers/survey';
 import { submitResult, fetchSurvey } from '../actions/survey';
 import './SurveyPage.css';

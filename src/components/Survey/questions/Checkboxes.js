@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 class MultipleChoice extends Component {
   render() {
-    const { title, options, id } = this.props;
+    const { title, options, _id } = this.props;
     return (
         <div>
           <h3 className="question-title">{title}</h3>
@@ -12,7 +12,7 @@ class MultipleChoice extends Component {
             return (
                 <div className="checkbox" key={index}>
                   <label>
-                    <Field type="checkbox" name={`${id}[]`} value={option._id} component="input"/>
+                    <Field type="checkbox" name={`${_id}[${option._id}]`} component="input"/>
                     {option.content}
                   </label>
                 </div>
