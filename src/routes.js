@@ -5,6 +5,7 @@ import RegisterPage from './containers/RegisterPage';
 import LoginPage from './containers/LoginPage';
 import UserSurveysPage from './containers/UserSurveysPage';
 import LogoutPage from './containers/LogoutPage';
+import UserSurveyPage from './containers/UserSurveyPage';
 import EditSurveyPage from './containers/EditSurveyPage';
 import SurveyPage from './containers/SurveyPage';
 
@@ -48,8 +49,10 @@ export default function routes(store) {
         <Route path="register" component={RegisterPage}/>
         <Route path="login" component={LoginPage}/>
         <Route path="logout" component={LogoutPage}/>
-        <Route path="surveys" component={UserSurveysPage}/>
-        <Route path="surveys/:surveyId/edit" component={EditSurveyPage}/>
+        <Route path="user/surveys" component={UserSurveysPage}/>
+        <Route path="user/surveys/:surveyId/" component={UserSurveyPage}>
+          <Route path="edit" component={EditSurveyPage}/>
+        </Route>
         <Route path="surveys/:surveyId" component={SurveyPage}/>
       </Route>
   );
@@ -57,10 +60,10 @@ export default function routes(store) {
 
 export const Path = {
   editSurvey(survey) {
-    return `/surveys/${survey._id}/edit`;
+    return `/user/surveys/${survey._id}/edit`;
   },
 
   surveyList() {
-    return `/surveys`;
+    return `/user/surveys`;
   }
 };
