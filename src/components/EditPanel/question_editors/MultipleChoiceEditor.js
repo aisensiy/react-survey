@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from "react";
 import OptionField from './OptionField';
 import ReactDOM from "react-dom";
-import { v4 } from 'node-uuid';
+import newId  from '../../../util/idGenerator';
 
 class MultipleChoiceEditor extends Component {
   constructor(props) {
@@ -51,7 +51,7 @@ class MultipleChoiceEditor extends Component {
                       this.props.updateQuestion(_id, {
                         options: [
                           ...options.slice(0, index + 1),
-                          {_id: v4(), content: option.content},
+                          {_id: newId(), content: option.content},
                           ...options.slice(index + 1)]
                       })
                     }}

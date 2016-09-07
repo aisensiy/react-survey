@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import SurveyPreviewView from '../../components/SurveyPreview/SurveyPreview';
 import QuestionList from '../../components/SurveyPreview/QuestionList';
 import { getSurvey, getFetchStatus, getFetchError, isHeaderActive } from '../../reducers/edit_survey';
-import { activeQuestion } from '../../actions/edit_survey';
+import { activeQuestion, cloneQuestion } from '../../actions/edit_survey';
 
 class SurveyPreview extends Component {
   render() {
@@ -32,28 +32,23 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(activeQuestion('header'));
     },
     onActive: bindActionCreators(activeQuestion, dispatch),
-    onRemove: (questionId) => {
+    onRemove: (question) => {
       return dispatch({
         type: 'REMOVE_QUESTION',
-        questionId
+        questionId: question._id
       });
     },
-    onClone: (questionId) => {
-      return dispatch({
-        type: 'CLONE_QUESTION',
-        questionId
-      });
-    },
-    onUp: (questionId) => {
+    onClone: bindActionCreators(cloneQuestion, dispatch),
+    onUp: (question) => {
       return dispatch({
         type: 'SORT_QUESTION_UP',
-        questionId
+        questionId: question._id
       })
     },
-    onDown: (questionId) => {
+    onDown: (question) => {
       return dispatch({
         type: 'SORT_QUESTION_DOWN',
-        questionId
+        questionId: question._id
       });
     },
     onSort: (sortList) => {

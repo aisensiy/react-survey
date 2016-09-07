@@ -1,5 +1,5 @@
 import  PouchDB from 'pouchdb';
-import { v4 } from 'node-uuid';
+import newId from '../util/idGenerator';
 
 window.PouchDB = PouchDB;
 
@@ -56,7 +56,7 @@ export const fetchUserSurveys = (email) => {
 export const createSurvey = (email, initSurvey) => {
   return db.put({
     ...initSurvey,
-    _id: `${email}-survey-${v4()}`
+    _id: `${email}-survey-${newId()}`
   }).then(res => {
     return db.get(res.id);
   });

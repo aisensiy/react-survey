@@ -16,10 +16,10 @@ class QuestionList extends React.Component {
                     showDown={index !== orderedQuestions.length - 1}
                     isActive={current_question_id === question._id}
                     onActive={() => this.props.onActive(question._id)}
-                    onRemove={() => this.props.onRemove(question._id)}
-                    onClone={() => this.props.onClone(question._id)}
-                    onUp={() => this.props.onUp(question._id)}
-                    onDown={() => this.props.onDown(question._id)}
+                    onRemove={() => this.props.onRemove(question)}
+                    onClone={() => this.props.onClone(question)}
+                    onUp={() => this.props.onUp(question)}
+                    onDown={() => this.props.onDown(question)}
                 />
               </li>
           );

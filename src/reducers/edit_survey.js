@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
-import { InitQuestions } from '../constants/Questions';
 import tabTypes from '../constants/TabTypes';
-import { v4 } from 'node-uuid';
 
 export const assembleSurvey = (survey) => {
   const { _id, title, subTitle, questions } = survey;
@@ -13,25 +11,6 @@ export const assembleSurvey = (survey) => {
     _id,
     questions: [...orderQuestions]
   };
-};
-
-export const normalizeSurvey = (survey) => {
-  let questions = {};
-  survey.questions.forEach(question => {
-    questions[question._id] = question
-  });
-  let question_order = survey.questions.map(question => question._id);
-  return {
-    _id: survey._id,
-    title: survey.title,
-    subTitle: survey.subTitle,
-    questions: questions,
-    question_order: question_order,
-    current_question_id: '',
-    original: {
-      _rev: survey._rev
-    }
-  }
 };
 
 const surveyReducer = (state = {
@@ -50,7 +29,7 @@ const surveyReducer = (state = {
       };
     case 'FETCH_SURVEY_REQUEST_SUCCESS':
       return {
-        survey: normalizeSurvey(action.payload),
+        survey: action.payload,
         isLoading: false,
         error: null
       };
@@ -61,16 +40,15 @@ const surveyReducer = (state = {
         error: action.payload
       };
     case 'EDIT_SURVEY_ADD_QUESTION':
-      let newQuestion = (InitQuestions[action.questionType])();
       return {
         ...state,
         survey: {
           ...state.survey,
           questions: {
             ...state.survey.questions,
-            [newQuestion._id]: newQuestion
+            [action.payload._id]: action.payload
           },
-          question_order: [...state.survey.question_order, newQuestion._id]
+          question_order: [...state.survey.question_order, action.questionId]
         }
       };
     case 'EDIT_SURVEY_UPDATE_SURVEY_HEADER':
@@ -129,28 +107,25 @@ const surveyReducer = (state = {
       };
     case 'CLONE_QUESTION':
       idx = state.survey.question_order.indexOf(action.questionId);
-      let question = state.survey.questions[action.questionId];
-      let newId = v4();
-      newOrder = [...state.survey.question_order];
-      newOrder = [...newOrder.slice(0, idx + 1), newId, ...newOrder.slice(idx + 1)];
       return {
         ...state,
         survey: {
           ...state.survey,
           questions: {
             ...state.survey.questions,
-            [newId]: {
-              ...question,
-              _id: newId
+            [action.payload._id]: {
+              ...action.payload
             }
           },
-          question_order: newOrder
+          question_order: [
+            ...state.survey.question_order.slice(0, idx + 1),
+            action.payload._id,
+            ...state.survey.question_order.slice(idx + 1)
+          ]
         }
       };
     case 'REMOVE_QUESTION':
       idx = state.survey.question_order.indexOf(action.questionId);
-      newOrder = [...state.survey.question_order];
-      newOrder = [...newOrder.slice(0, idx), ...newOrder.slice(idx + 1)];
       let newQuestions = {...state.survey.questions};
       delete newQuestions[action.questionId];
       return {
@@ -158,7 +133,10 @@ const surveyReducer = (state = {
         survey: {
           ...state.survey,
           questions: newQuestions,
-          question_order: newOrder
+          question_order: [
+            ...state.survey.question_order.slice(0, idx),
+            ...state.survey.question_order.slice(idx + 1)
+          ]
         }
       };
     default:

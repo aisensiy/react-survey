@@ -1,15 +1,40 @@
 import * as api from '../api';
 import tabTypes from '../constants/TabTypes';
+import { InitQuestions } from '../constants/Questions';
+import newId from '../util/idGenerator';
 
 export const switchTab = (tab) => ({
   type: 'EDIT_SURVEY_SWITCH_TAB',
   tab
 });
 
-export const addQuestion = (questionType) => ({
-  type: 'EDIT_SURVEY_ADD_QUESTION',
-  questionType
-});
+export const addQuestion = (questionType) => {
+  let newQuestion = InitQuestions[questionType]();
+  return {
+    type: 'EDIT_SURVEY_ADD_QUESTION',
+    payload: newQuestion,
+    questionId: newQuestion._id
+  };
+};
+
+export const normalizeSurvey = (survey) => {
+  let questions = {};
+  survey.questions.forEach(question => {
+    questions[question._id] = question
+  });
+  let question_order = survey.questions.map(question => question._id);
+  return {
+    _id: survey._id,
+    title: survey.title,
+    subTitle: survey.subTitle,
+    questions: questions,
+    question_order: question_order,
+    current_question_id: '',
+    original: {
+      _rev: survey._rev
+    }
+  }
+};
 
 export const fetchSurvey = surveyId => dispatch => {
   dispatch({
@@ -20,7 +45,7 @@ export const fetchSurvey = surveyId => dispatch => {
   api.fetchSurvey(surveyId).then(res => {
     dispatch({
       type: 'FETCH_SURVEY_REQUEST_SUCCESS',
-      payload: res
+      payload: normalizeSurvey(res)
     });
   }).catch(err => {
     dispatch({
@@ -88,4 +113,14 @@ export const updateSurveyHeader = (params) => {
     type: 'EDIT_SURVEY_UPDATE_SURVEY_HEADER',
     payload: params
   };
+};
+
+export const cloneQuestion = (question) => {
+  return {
+    type: 'CLONE_QUESTION',
+    payload: {
+      ...question,
+      _id: newId()
+    }
+  }
 };
