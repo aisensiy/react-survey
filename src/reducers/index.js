@@ -6,6 +6,7 @@ import session from './session';
 import surveys from './surveys';
 import create_survey from './create_survey';
 import edit_survey from './edit_survey';
+import survey from './survey';
 
 const root = combineReducers({
   form: formReducer,
@@ -13,7 +14,8 @@ const root = combineReducers({
   session,
   surveys,
   create_survey,
-  edit_survey
+  edit_survey,
+  survey
 });
 
 export default root;

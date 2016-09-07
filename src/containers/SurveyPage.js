@@ -1,0 +1,52 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Survey from '../components/Survey/Survey';
+import QuestionList from '../components/SurveyPreview/QuestionList';
+import { getSurvey, getFetchError, getFetchStatus } from '../reducers/survey';
+import { submitResult, fetchSurvey } from '../actions/survey';
+import './SurveyPage.css';
+
+class SurveyPage extends React.Component {
+  loadData() {
+    this.props.fetchSurvey(this.props.surveyId);
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.surveyId !== prevProps.surveyId) {
+      this.loadData();
+    }
+  }
+
+  render() {
+    return (
+        <div className="row SurveyPage">
+          <div className="col-md-8 col-md-offset-2 survey">
+            <Survey {...this.props}/>
+          </div>
+        </div>
+    )
+  }
+}
+
+const mapStateToProps = (state, { params }) => {
+  return {
+    survey: getSurvey(state.survey),
+    isLoading: getFetchStatus(state.survey),
+    error: getFetchError(state.survey),
+    surveyId: params.surveyId
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSubmit: bindActionCreators(submitResult, dispatch),
+    fetchSurvey: bindActionCreators(fetchSurvey, dispatch)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage);

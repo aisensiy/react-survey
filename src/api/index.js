@@ -62,8 +62,27 @@ export const createSurvey = (email, initSurvey) => {
   });
 };
 
+export const normalizeSurvey = (survey) => {
+  let questions = {};
+  survey.questions.forEach(question => {
+    questions[question._id] = question
+  });
+  let question_order = survey.questions.map(question => question._id);
+  return {
+    _id: survey._id,
+    title: survey.title,
+    subTitle: survey.subTitle,
+    questions: questions,
+    question_order: question_order,
+    current_question_id: '',
+    original: {
+      _rev: survey._rev
+    }
+  }
+};
+
 export const fetchSurvey = (surveyId) => {
-  return db.get(surveyId);
+  return db.get(surveyId).then(res => normalizeSurvey(res));
 };
 
 export const deleteSurvey = surveyId => db.remove(surveyId);
