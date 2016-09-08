@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 
-class MultipleChoice extends Component {
+class Checkboxes extends Component {
   render() {
     const { title, options, _id } = this.props;
     return (
@@ -23,10 +23,9 @@ class MultipleChoice extends Component {
   }
 }
 
-MultipleChoice.propTypes = {
+Checkboxes.propTypes = {
   title: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
-  name: PropTypes.string.isRequired
+  options: PropTypes.array.isRequired
 };
 
-export default MultipleChoice;
+export default Checkboxes;

@@ -26,8 +26,7 @@ class MultipleChoice extends Component {
 
 MultipleChoice.propTypes = {
   title: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
-  name: PropTypes.string.isRequired
+  options: PropTypes.array.isRequired
 };
 
 export default MultipleChoice;

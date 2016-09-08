@@ -1,3 +1,5 @@
+import { Path } from '../routes';
+
 var initialState = {isSuccess: false, isLoading: false, user: null, prevPath: null};
 
 export default function (state = initialState, action) {
@@ -29,5 +31,5 @@ export default function (state = initialState, action) {
 };
 
 export const home = (user) => {
-  return '/surveys';
+  return Path.surveyList();
 };

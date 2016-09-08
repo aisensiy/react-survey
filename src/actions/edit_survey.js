@@ -3,6 +3,25 @@ import tabTypes from '../constants/TabTypes';
 import { InitQuestions } from '../constants/Questions';
 import newId from '../util/idGenerator';
 
+export const normalizeSurvey = (survey) => {
+  let questions = {};
+  survey.questions.forEach(question => {
+    questions[question._id] = question
+  });
+  let question_order = survey.questions.map(question => question._id);
+  return {
+    _id: survey._id,
+    title: survey.title,
+    subTitle: survey.subTitle,
+    questions: questions,
+    question_order: question_order,
+    current_question_id: '',
+    original: {
+      _rev: survey._rev
+    }
+  }
+};
+
 export const switchTab = (tab) => ({
   type: 'EDIT_SURVEY_SWITCH_TAB',
   tab
@@ -26,7 +45,7 @@ export const fetchSurvey = surveyId => dispatch => {
   api.fetchSurvey(surveyId).then(res => {
     dispatch({
       type: 'FETCH_SURVEY_REQUEST_SUCCESS',
-      payload: res
+      payload: normalizeSurvey(res)
     });
   }).catch(err => {
     dispatch({

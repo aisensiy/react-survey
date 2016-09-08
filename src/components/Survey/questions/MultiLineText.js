@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { Field } from 'redux-form';
 
-class MultipleLineText extends Component {
+class MultiLineText extends Component {
   render() {
     const { title, placeholder, _id } = this.props;
     return (
@@ -15,9 +15,9 @@ class MultipleLineText extends Component {
   }
 }
 
-MultipleLineText.propTypes = {
+MultiLineText.propTypes = {
   title: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired
 };
 
-export default MultipleLineText;
+export default MultiLineText;

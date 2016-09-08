@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { Field } from 'redux-form';
 
-class MultipleChoice extends Component {
+class Dropdown extends Component {
   render() {
     const { title, options, _id } = this.props;
     return (
@@ -12,7 +12,7 @@ class MultipleChoice extends Component {
               <option></option>
               {options.map((option, index) => {
                 return (
-                    <option value={option._id}>{option.content}</option>
+                    <option value={option._id} key={option._id}>{option.content}</option>
                 )
               })}
             </Field>
@@ -22,10 +22,10 @@ class MultipleChoice extends Component {
   }
 }
 
-MultipleChoice.propTypes = {
+Dropdown.propTypes = {
   title: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   _id: PropTypes.string.isRequired
 };
 
-export default MultipleChoice;
+export default Dropdown;

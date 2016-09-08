@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { Field } from 'redux-form';
 
-class MultipleChoice extends Component {
+class MultiChoice extends Component {
   render() {
     const { title, options, _id } = this.props;
     return (
@@ -24,9 +24,9 @@ class MultipleChoice extends Component {
   }
 }
 
-MultipleChoice.propTypes = {
+MultiChoice.propTypes = {
   title: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired
 };
 
-export default MultipleChoice;
+export default MultiChoice;

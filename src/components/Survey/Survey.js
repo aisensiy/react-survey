@@ -22,8 +22,7 @@ class Survey extends React.Component {
     console.log(this.props);
     let { survey, isLoading, error, handleSubmit, isSuccess } = this.props;
 
-    let { title, subTitle, questions, question_order } = survey;
-    let orderedQuestions = question_order.map(id => questions[id]);
+    let { title, subTitle, questions } = survey;
 
     if (isLoading) {
       return this.renderLoading();
@@ -49,7 +48,7 @@ class Survey extends React.Component {
               <p>{subTitle}</p>
             </header>
             <ul className="list-unstyled">
-              {orderedQuestions.map(question => {
+              {questions.map(question => {
                 return <li key={question._id}><QuestionWrapper question={question}/></li>
               })}
             </ul>

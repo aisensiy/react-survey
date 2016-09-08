@@ -26,9 +26,9 @@ export const QuestionTypes = {
 };
 
 export const InitQuestions = {
-  'MULTI_CHOICE': () => ({
+  [QuestionTypes.MULTI_CHOICE]: () => ({
     "_id": newId(),
-    "type": "MULTI_CHOICE",
+    "type": QuestionTypes.MULTI_CHOICE,
     "title": "Select a choice",
     "options": [
       {
@@ -45,9 +45,9 @@ export const InitQuestions = {
       }
     ]
   }),
-  'CHECKBOXES': () => ({
+  [QuestionTypes.CHECKBOXES]: () => ({
     "_id": newId(),
-    "type": "CHECKBOXES",
+    "type": QuestionTypes.CHECKBOXES,
     "title": "Check All That Apply",
     "options": [
       {
@@ -64,21 +64,21 @@ export const InitQuestions = {
       }
     ]
   }),
-  'SINGLE_LINE_TEXT': () => ({
+  [QuestionTypes.SINGLE_LINE_TEXT]: () => ({
     "_id": newId(),
-    type: 'SINGLE_LINE_TEXT',
+    type: QuestionTypes.SINGLE_LINE_TEXT,
     title: 'Untitled',
     placeholder: ''
   }),
-  'MUTLI_LINE_TEXT': () => ({
+  [QuestionTypes.MUTLI_LINE_TEXT]: () => ({
     "_id": newId(),
-    type: 'MUTLI_LINE_TEXT',
+    type: QuestionTypes.MUTLI_LINE_TEXT,
     title: 'Untitled',
     placeholder: ''
   }),
-  'DROPDOWN': () => ({
+  [QuestionTypes.DROPDOWN]: () => ({
     "_id": newId(),
-    "type": "DROPDOWN",
+    "type": QuestionTypes.DROPDOWN,
     "title": "Select a choice",
     "options": [
       {

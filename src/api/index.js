@@ -53,6 +53,16 @@ export const fetchUserSurveys = (email) => {
   });
 };
 
+export const fetchResults = (surveyId) => {
+  return db.allDocs({
+    include_docs: true,
+    startkey: `result-${surveyId}-`,
+    endkey: `result-${surveyId}-\uffff`
+  }).then(res => {
+    return Promise.resolve(res.rows.map(row => row.doc));
+  });
+};
+
 export const createSurvey = (email, initSurvey) => {
   return db.put({
     ...initSurvey,
@@ -69,27 +79,9 @@ export const saveResult = (surveyId, result) => {
   });
 };
 
-export const normalizeSurvey = (survey) => {
-  let questions = {};
-  survey.questions.forEach(question => {
-    questions[question._id] = question
-  });
-  let question_order = survey.questions.map(question => question._id);
-  return {
-    _id: survey._id,
-    title: survey.title,
-    subTitle: survey.subTitle,
-    questions: questions,
-    question_order: question_order,
-    current_question_id: '',
-    original: {
-      _rev: survey._rev
-    }
-  }
-};
 
 export const fetchSurvey = (surveyId) => {
-  return db.get(surveyId).then(res => normalizeSurvey(res));
+  return db.get(surveyId);
 };
 
 export const deleteSurvey = surveyId => db.remove(surveyId);
