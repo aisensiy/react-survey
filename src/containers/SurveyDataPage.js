@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ResultGridView from '../components/Result/ResultGrid';
+import ResultGrid from './Result/ResultGrid';
+import ResultModal from './Result/ResultModal';
 import { fetchData } from '../actions/data';
-import { resultsToGrid } from '../reducers/data';
 
 class SurveyDataPage extends React.Component {
   loadData() {
@@ -22,7 +22,8 @@ class SurveyDataPage extends React.Component {
   render() {
     return (
         <div>
-          <ResultGridView {...this.props}/>
+          <ResultGrid/>
+          <ResultModal/>
         </div>
     );
   }
@@ -30,8 +31,7 @@ class SurveyDataPage extends React.Component {
 
 const mapStateToProps = (state, { params }) => {
   return {
-    surveyId: params.surveyId,
-    grid: resultsToGrid(state.data)
+    surveyId: params.surveyId
   };
 };
 

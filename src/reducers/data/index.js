@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { QuestionTypes } from '../constants/Questions';
+import { QuestionTypes } from '../../constants/Questions';
+import gridModalReducer from './modal';
 
 export const FETCH_DATA_REQUEST = 'RESULT_FETCH_DATA_REQUEST';
 export const FETCH_DATA_REQUEST_SUCCESS = 'RESULT_FETCH_DATA_REQUEST_SUCCESS';
@@ -9,7 +10,7 @@ export const FETCH_SURVEY_REQUEST_SUCCESS = 'RESULT_FETCH_SURVEY_REQUEST_SUCCESS
 
 export const FETCH_RESULTS_REQUEST_SUCCESS = 'RESULT_FETCH_RESULTS_REQUEST_SUCCESS';
 
-const surveyReducer = (state = null, action) => {
+const surveyReducer = (state = {title: '', subTitle: '', questions: []}, action) => {
   switch (action.type) {
     case FETCH_SURVEY_REQUEST_SUCCESS:
       return action.payload;
@@ -53,7 +54,16 @@ const statusReducer = (state = {isLoading: false, error: null}, action) => {
 export default combineReducers({
   survey: surveyReducer,
   results: resultsReducer,
-  status: resultsReducer
+  status: resultsReducer,
+  gridModal: gridModalReducer
+});
+
+export const getModal = (state) => state.gridModal;
+export const getColumns = (state) => state.survey.questions.map(question => {
+  return {
+    columnName: question._id,
+    displayName: question.title
+  };
 });
 
 const resultToText = {
@@ -84,26 +94,29 @@ export const resultsToGrid = (state) => {
     };
   }
 
-  let columns = survey.questions.map(question => {
+  let columns = survey.questions.map((question, index) => {
     return {
-      title: question.title,
-      id: question._id
+      columnName: question._id,
+      displayName: question.title
     };
   });
 
   let questionTypeMap = {};
-  survey.questions.forEach(question => { questionTypeMap[question._id] = question.type });
+  survey.questions.forEach(question => {
+    questionTypeMap[question._id] = question.type
+  });
 
-  let textResults = results.map(result => {
-    let textResult = survey.questions.map(question => {
+  let textResults = results.map((result, index) => {
+    let resultMap = {
+      id: result._id
+    };
+
+    survey.questions.forEach(question => {
       let questionResult = result.result[question._id];
-      return questionResult ? resultToText[question.type](question, questionResult) : '';
+      resultMap[question._id] = questionResult ? resultToText[question.type](question, questionResult) : '';
     });
 
-    return {
-      id: result._id,
-      result: textResult
-    };
+    return resultMap;
   });
 
   return {

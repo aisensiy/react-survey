@@ -6,7 +6,7 @@ import {
     FETCH_RESULTS_REQUEST_SUCCESS,
     FETCH_SURVEY_REQUEST_SUCCESS,
     FETCH_DATA_REQUEST_FAIL
-} from '../reducers/data';
+} from '../reducers/data/index';
 
 export const fetchData = (surveyId) => (dispatch) => {
   dispatch({

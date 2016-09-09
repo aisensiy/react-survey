@@ -1,0 +1,26 @@
+.ResultGrid .grid-wrapper {
+  overflow: auto;
+}
+
+.ResultGrid table {
+  font-size: 0.8em;
+}
+
+.ResultGrid table tbody {
+  background-color: #fff;
+}
+
+.ResultGrid table tbody tr:hover {
+  background-color: #E6F5FF !important;
+}
+
+.ResultGrid table td, .ResultGrid table th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+.ResultGrid table th.index, .ResultGrid table td.index {
+  width: 60px !important;
+}

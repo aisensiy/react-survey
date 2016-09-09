@@ -7,7 +7,7 @@ import surveys from './surveys';
 import create_survey from './create_survey';
 import edit_survey from './edit_survey';
 import survey from './survey';
-import data from './data';
+import data from './data/index';
 
 const root = combineReducers({
   form: formReducer,

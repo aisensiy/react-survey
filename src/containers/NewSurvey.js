@@ -4,13 +4,13 @@ import { withRouter } from 'react-router';
 import { bindActionCreators } from 'redux';
 import NewSurveyView from '../components/NewSurvey';
 import { createSurveyRequest, resetCreateSurvey } from '../actions/surveys';
-import { newSurveyRedirectPath } from '../reducers/create_survey';
+import { Path } from '../routes';
 
 class NewSurvey extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.props.isSuccess) {
       this.props.resetCreateSurvey();
-      this.props.router.push(newSurveyRedirectPath(this.props.newSurvey));
+      this.props.router.push(Path.editSurvey(this.props.newSurvey));
     }
   }
 
