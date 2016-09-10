@@ -8,7 +8,7 @@ class SurveyNavBar extends React.Component {
 
     return (
         <ul className="nav nav-pills SurveyNavBar">
-          <li role="presentation"><a href="#">Overview</a></li>
+          <NavLink url={`/user/surveys/${params.surveyId}/`} location={location} text="Overview"/>
           <NavLink url={`/user/surveys/${params.surveyId}/edit`} location={location} text="Edit"/>
           <NavLink url={`/user/surveys/${params.surveyId}/data`} location={location} text="Data"/>
         </ul>

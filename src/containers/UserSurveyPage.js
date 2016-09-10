@@ -22,7 +22,7 @@ class EditSurveyPage extends React.Component {
 
   render() {
     return (
-        <div className="EditSurveyPage">
+        <div>
           <div>
             <SurveyNavBar/>
           </div>

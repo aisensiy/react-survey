@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import App from './App';
 import RegisterPage from './containers/RegisterPage';
 import LoginPage from './containers/LoginPage';
@@ -8,6 +8,7 @@ import LogoutPage from './containers/LogoutPage';
 import UserSurveyPage from './containers/UserSurveyPage';
 import EditSurveyPage from './containers/EditSurveyPage';
 import SurveyDataPage from './containers/SurveyDataPage';
+import OverviewSurveyPage from './containers/OverviewSurveyPage';
 import SurveyPage from './containers/SurveyPage';
 
 import { fetchCurrentUserRequest, fetchCurrentUserRequestSuccess, fetchCurrentUserRequestFail } from './actions/login';
@@ -52,9 +53,10 @@ export default function routes(store) {
         <Route path="logout" component={LogoutPage}/>
         <Route path="user/surveys" component={UserSurveysPage}/>
         <Route path="surveys/:surveyId" component={SurveyPage}/>
-        <Route path="user/surveys/:surveyId/" component={UserSurveyPage}>
-          <Route path="edit" component={EditSurveyPage}/>
-          <Route path="data" component={SurveyDataPage}/>
+        <Route path="user/surveys/:surveyId" component={UserSurveyPage}>
+          <IndexRoute component={OverviewSurveyPage}/>
+          <Route path="/edit" component={EditSurveyPage}/>
+          <Route path="/data" component={SurveyDataPage}/>
         </Route>
       </Route>
   );
@@ -67,5 +69,9 @@ export const Path = {
 
   surveyList() {
     return `/user/surveys`;
+  },
+
+  viewSurvey(survey) {
+    return `/surveys/${survey._id}`;
   }
 };
