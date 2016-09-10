@@ -24,3 +24,8 @@
 .ResultGrid table th.index, .ResultGrid table td.index {
   width: 60px !important;
 }
+
+.ResultGrid table th.select-box, .ResultGrid table td.select-box {
+  width: 26px !important;
+  text-align: center;
+}

@@ -3,7 +3,7 @@ import './ResultGrid.css';
 
 class ResultGrid extends React.Component {
   render() {
-    let { onClickRow, onSelectRow } = this.props;
+    let { onClickRow, onSelectRow, rowSelects } = this.props;
     let { columns, results } = this.props.grid;
 
     return (
@@ -12,6 +12,9 @@ class ResultGrid extends React.Component {
             <table className="table table-condensed table-hover table-bordered">
               <thead>
               <tr>
+                <th className="select-box">
+                  <input type="checkbox" onClick={e => e.stopPropagation()} />
+                </th>
                 <th className="index">#</th>
                 {columns.map(col => {
                   return <th key={col.id}>{col.displayName}</th>
@@ -25,6 +28,14 @@ class ResultGrid extends React.Component {
                         key={result.id}
                         onClick={() => onClickRow(result, index)}
                     >
+                      <td className="select-box">
+                        <input
+                            type="checkbox"
+                            onClick={e => e.stopPropagation()}
+                            onChange={() => onSelectRow(result.id)}
+                            value={rowSelects[result.id]}
+                        />
+                      </td>
                       <td className="index">{index + 1}</td>
                       {columns.map((col, index) => {
                         return <td key={index}>{result[col.columnName]}</td>

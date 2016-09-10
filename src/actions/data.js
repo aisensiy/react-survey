@@ -5,7 +5,8 @@ import {
     FETCH_DATA_REQUEST_SUCCESS,
     FETCH_RESULTS_REQUEST_SUCCESS,
     FETCH_SURVEY_REQUEST_SUCCESS,
-    FETCH_DATA_REQUEST_FAIL
+    FETCH_DATA_REQUEST_FAIL,
+    TOGGLE_ROW_SELECT
 } from '../reducers/data/index';
 
 export const fetchData = (surveyId) => (dispatch) => {
@@ -33,3 +34,8 @@ export const fetchData = (surveyId) => (dispatch) => {
     });
   });
 };
+
+export const toggleRowSelect = (id) => ({
+  type: TOGGLE_ROW_SELECT,
+  payload: id
+});

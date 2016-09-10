@@ -51,11 +51,28 @@ const statusReducer = (state = {isLoading: false, error: null}, action) => {
   }
 };
 
+export const TOGGLE_ROW_SELECT = 'TOGGLE_ROW_SELECT';
+
+const rowSelectsReducer = (state={}, action) => {
+  switch (action.type) {
+    case TOGGLE_ROW_SELECT:
+      return {
+        ...state,
+        [action.payload]: !state[action.payload]
+      };
+    default:
+      return state;
+  }
+};
+
+export const getRowSelects = (state) => state.rowSelects;
+
 export default combineReducers({
   survey: surveyReducer,
   results: resultsReducer,
   status: resultsReducer,
-  gridModal: gridModalReducer
+  gridModal: gridModalReducer,
+  rowSelects: rowSelectsReducer
 });
 
 export const getModal = (state) => state.gridModal;
