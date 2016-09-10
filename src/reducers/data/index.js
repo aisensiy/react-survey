@@ -69,6 +69,7 @@ const rowSelectsReducer = (state={}, action) => {
 };
 
 export const getRowSelects = (state) => state.rowSelects;
+export const getAllSelected = (state) => !(Object.keys(state.rowSelects).some(id => !state.rowSelects[id]));
 
 export default combineReducers({
   survey: surveyReducer,

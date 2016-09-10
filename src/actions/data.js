@@ -28,6 +28,8 @@ export const fetchData = (surveyId) => (dispatch) => {
       type: FETCH_RESULTS_REQUEST_SUCCESS,
       payload: values[1]
     });
+
+    dispatch(unSelectAll(values[1]));
   }).catch(err => {
     dispatch({
       type: FETCH_DATA_REQUEST_FAIL,
@@ -55,7 +57,7 @@ export const selectAll = (results) => {
 export const unSelectAll = (results) => {
   let newState = {};
   results.forEach(result => {
-    newState[result.id] = false;
+    newState[result.id || result._id] = false;
   });
   return {
     type: ROW_SET_ALL,

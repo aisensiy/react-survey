@@ -2,19 +2,13 @@ import React, { PropTypes } from 'react';
 import './ResultGrid.css';
 
 class ResultGrid extends React.Component {
-  isAllSelected() {
-    let { rowSelects, grid: { results } } = this.props;
-    return !(results.some(result => !rowSelects[result.id]));
-  }
-
   toggleSelectAll() {
     let { onSelectAll, onUnSelectAll, grid: { results } } = this.props;
-    let isAllSelected = this.isAllSelected();
-    isAllSelected ? onUnSelectAll(results) : onSelectAll(results);
+    this.props.allSelected ? onUnSelectAll(results) : onSelectAll(results);
   }
 
   render() {
-    let { onClickRow, onSelectRow, rowSelects, onSelectAll, onUnSelectAll } = this.props;
+    let { onClickRow, onSelectRow, rowSelects, allSelected } = this.props;
     let { columns, results } = this.props.grid;
 
 
@@ -29,7 +23,7 @@ class ResultGrid extends React.Component {
                       type="checkbox"
                       onClick={e => e.stopPropagation()}
                       onChange={this.toggleSelectAll.bind(this)}
-                      checked={this.isAllSelected()}
+                      checked={allSelected}
                   />
                 </th>
                 <th className="index">#</th>
