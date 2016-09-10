@@ -29,3 +29,7 @@
   width: 26px !important;
   text-align: center;
 }
+
+.ResultGrid .toolbar {
+  margin: 5px 0;
+}

@@ -89,3 +89,13 @@ export const deleteSurvey = surveyId => db.remove(surveyId);
 export const updateSurvey = (survey) => {
   return db.put(survey);
 };
+
+export const deleteResults = (results) => {
+  return db.bulkDocs(results.map(result => {
+    return {
+      _id: result._id,
+      _rev: result._rev,
+      _deleted: true
+    };
+  }));
+};

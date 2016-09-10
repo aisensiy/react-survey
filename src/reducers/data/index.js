@@ -6,6 +6,8 @@ export const FETCH_DATA_REQUEST = 'RESULT_FETCH_DATA_REQUEST';
 export const FETCH_DATA_REQUEST_SUCCESS = 'RESULT_FETCH_DATA_REQUEST_SUCCESS';
 export const FETCH_DATA_REQUEST_FAIL = 'RESULT_FETCH_DATA_REQUEST_FAIL';
 
+export const DELETE_ROW = 'RESULT_DELETE_ROW';
+
 export const FETCH_SURVEY_REQUEST_SUCCESS = 'RESULT_FETCH_SURVEY_REQUEST_SUCCESS';
 
 export const FETCH_RESULTS_REQUEST_SUCCESS = 'RESULT_FETCH_RESULTS_REQUEST_SUCCESS';
@@ -23,6 +25,8 @@ const resultsReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_RESULTS_REQUEST_SUCCESS:
       return action.payload;
+    case DELETE_ROW:
+      return [...state.filter(result => !action.payload[result._id])];
     default:
       return state;
   }
@@ -69,7 +73,7 @@ const rowSelectsReducer = (state={}, action) => {
 };
 
 export const getRowSelects = (state) => state.rowSelects;
-export const getAllSelected = (state) => !(Object.keys(state.rowSelects).some(id => !state.rowSelects[id]));
+export const getAllSelected = (state) => Object.keys(state.rowSelects).length && !(Object.keys(state.rowSelects).some(id => !state.rowSelects[id]));
 
 export default combineReducers({
   survey: surveyReducer,
@@ -129,7 +133,8 @@ export const resultsToGrid = (state) => {
 
   let textResults = results.map((result, index) => {
     let resultMap = {
-      id: result._id
+      _id: result._id,
+      _rev: result._rev
     };
 
     survey.questions.forEach(question => {

@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Button } from 'react-bootstrap';
 import './ResultGrid.css';
 
 class ResultGrid extends React.Component {
@@ -8,13 +9,17 @@ class ResultGrid extends React.Component {
   }
 
   render() {
-    let { onClickRow, onSelectRow, rowSelects, allSelected } = this.props;
+    let { onClickRow, onSelectRow, rowSelects, allSelected, onDeleteRow } = this.props;
     let { columns, results } = this.props.grid;
-
+    let anySelected = Object.keys(rowSelects).some(k => rowSelects[k]);
 
     return (
         <div className="ResultGrid">
           <div className="grid-wrapper">
+            <div className="toolbar">
+              <Button className={anySelected ? '' : 'invisible'} bsStyle="primary" bsSize="xsmall" onClick={() => onDeleteRow(results.filter(r => rowSelects[r._id]))}>Delete</Button>
+            </div>
+
             <table className="table table-condensed table-hover table-bordered">
               <thead>
               <tr>
@@ -36,15 +41,15 @@ class ResultGrid extends React.Component {
               {results.map((result, index) => {
                 return (
                     <tr
-                        key={result.id}
+                        key={result._id}
                         onClick={() => onClickRow(result, index)}
                     >
                       <td className="select-box">
                         <input
                             type="checkbox"
                             onClick={e => e.stopPropagation()}
-                            onChange={() => onSelectRow(result.id)}
-                            checked={rowSelects[result.id]}
+                            onChange={() => onSelectRow(result._id)}
+                            checked={rowSelects[result._id]}
                         />
                       </td>
                       <td className="index">{index + 1}</td>

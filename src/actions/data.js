@@ -1,4 +1,5 @@
 import * as api from '../api';
+import keyBy from 'lodash/keyBy';
 
 import {
     FETCH_DATA_REQUEST,
@@ -7,8 +8,19 @@ import {
     FETCH_SURVEY_REQUEST_SUCCESS,
     FETCH_DATA_REQUEST_FAIL,
     TOGGLE_ROW_SELECT,
-    ROW_SET_ALL
+    ROW_SET_ALL,
+    DELETE_ROW
 } from '../reducers/data/index';
+
+export const deleteRows = (deleteds) => dispatch => {
+  return api.deleteResults(deleteds).then(() => {
+    let deletedMap = keyBy(deleteds, e => e._id);
+    dispatch({
+      type: DELETE_ROW,
+      payload: deletedMap
+    });
+  });
+};
 
 export const fetchData = (surveyId) => (dispatch) => {
   dispatch({
@@ -46,7 +58,7 @@ export const toggleRowSelect = (id) => ({
 export const selectAll = (results) => {
   let newState = {};
   results.forEach(result => {
-    newState[result.id] = true;
+    newState[result._id] = true;
   });
   return {
     type: ROW_SET_ALL,
@@ -57,7 +69,7 @@ export const selectAll = (results) => {
 export const unSelectAll = (results) => {
   let newState = {};
   results.forEach(result => {
-    newState[result.id || result._id] = false;
+    newState[result._id] = false;
   });
   return {
     type: ROW_SET_ALL,
