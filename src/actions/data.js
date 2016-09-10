@@ -3,7 +3,6 @@ import keyBy from 'lodash/keyBy';
 
 import {
     FETCH_DATA_REQUEST,
-    FETCH_DATA_REQUEST_SUCCESS,
     FETCH_RESULTS_REQUEST_SUCCESS,
     FETCH_SURVEY_REQUEST_SUCCESS,
     FETCH_DATA_REQUEST_FAIL,
@@ -20,6 +19,28 @@ export const deleteRows = (deleteds) => dispatch => {
       payload: deletedMap
     });
   });
+};
+
+export const selectAll = (results) => {
+  let newState = {};
+  results.forEach(result => {
+    newState[result._id] = true;
+  });
+  return {
+    type: ROW_SET_ALL,
+    payload: newState
+  };
+};
+
+export const unSelectAll = (results) => {
+  let newState = {};
+  results.forEach(result => {
+    newState[result._id] = false;
+  });
+  return {
+    type: ROW_SET_ALL,
+    payload: newState
+  };
 };
 
 export const fetchData = (surveyId) => (dispatch) => {
@@ -54,25 +75,3 @@ export const toggleRowSelect = (id) => ({
   type: TOGGLE_ROW_SELECT,
   payload: id
 });
-
-export const selectAll = (results) => {
-  let newState = {};
-  results.forEach(result => {
-    newState[result._id] = true;
-  });
-  return {
-    type: ROW_SET_ALL,
-    payload: newState
-  };
-};
-
-export const unSelectAll = (results) => {
-  let newState = {};
-  results.forEach(result => {
-    newState[result._id] = false;
-  });
-  return {
-    type: ROW_SET_ALL,
-    payload: newState
-  };
-};

@@ -78,7 +78,7 @@ export const getAllSelected = (state) => Object.keys(state.rowSelects).length &&
 export default combineReducers({
   survey: surveyReducer,
   results: resultsReducer,
-  status: resultsReducer,
+  status: statusReducer,
   gridModal: gridModalReducer,
   rowSelects: rowSelectsReducer
 });

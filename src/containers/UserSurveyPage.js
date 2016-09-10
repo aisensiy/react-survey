@@ -1,16 +1,7 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
-
 import SurveyNavBar from './SurveyNavBar';
-import SurveyPreview from './SurveyPreview/SurveyPreview';
-import EditTab from './EditTab';
-import EditFooter from './EditFooter';
-
 import { fetchSurvey } from '../actions/edit_survey'
-
-import { AutoAffix } from 'react-overlays';
-
 import './EditSurveyPage.css';
 
 class EditSurveyPage extends React.Component {

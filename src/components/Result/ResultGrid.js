@@ -5,7 +5,11 @@ import './ResultGrid.css';
 class ResultGrid extends React.Component {
   toggleSelectAll() {
     let { onSelectAll, onUnSelectAll, grid: { results } } = this.props;
-    this.props.allSelected ? onUnSelectAll(results) : onSelectAll(results);
+    if (this.props.allSelected) {
+      onUnSelectAll(results);
+    } else {
+      onSelectAll(results);
+    }
   }
 
   render() {
