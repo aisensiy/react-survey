@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import ResultGridView from '../../components/Result/ResultGrid';
 import { resultsToGrid, getRowSelects } from '../../reducers/data';
 import { openModal } from '../../actions/gridModal';
-import { toggleRowSelect } from '../../actions/data';
+import { toggleRowSelect, selectAll, unSelectAll } from '../../actions/data';
 
 class ResultGrid extends React.Component {
   render() {
@@ -24,7 +24,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onClickRow: bindActionCreators(openModal, dispatch),
-    onSelectRow: bindActionCreators(toggleRowSelect, dispatch)
+    onSelectRow: bindActionCreators(toggleRowSelect, dispatch),
+    onSelectAll: bindActionCreators(selectAll, dispatch),
+    onUnSelectAll: bindActionCreators(unSelectAll, dispatch)
   };
 };
 

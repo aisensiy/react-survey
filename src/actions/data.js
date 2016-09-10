@@ -6,7 +6,8 @@ import {
     FETCH_RESULTS_REQUEST_SUCCESS,
     FETCH_SURVEY_REQUEST_SUCCESS,
     FETCH_DATA_REQUEST_FAIL,
-    TOGGLE_ROW_SELECT
+    TOGGLE_ROW_SELECT,
+    ROW_SET_ALL
 } from '../reducers/data/index';
 
 export const fetchData = (surveyId) => (dispatch) => {
@@ -39,3 +40,25 @@ export const toggleRowSelect = (id) => ({
   type: TOGGLE_ROW_SELECT,
   payload: id
 });
+
+export const selectAll = (results) => {
+  let newState = {};
+  results.forEach(result => {
+    newState[result.id] = true;
+  });
+  return {
+    type: ROW_SET_ALL,
+    payload: newState
+  };
+};
+
+export const unSelectAll = (results) => {
+  let newState = {};
+  results.forEach(result => {
+    newState[result.id] = false;
+  });
+  return {
+    type: ROW_SET_ALL,
+    payload: newState
+  };
+};

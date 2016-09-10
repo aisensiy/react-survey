@@ -2,9 +2,21 @@ import React, { PropTypes } from 'react';
 import './ResultGrid.css';
 
 class ResultGrid extends React.Component {
+  isAllSelected() {
+    let { rowSelects, grid: { results } } = this.props;
+    return !(results.some(result => !rowSelects[result.id]));
+  }
+
+  toggleSelectAll() {
+    let { onSelectAll, onUnSelectAll, grid: { results } } = this.props;
+    let isAllSelected = this.isAllSelected();
+    isAllSelected ? onUnSelectAll(results) : onSelectAll(results);
+  }
+
   render() {
-    let { onClickRow, onSelectRow, rowSelects } = this.props;
+    let { onClickRow, onSelectRow, rowSelects, onSelectAll, onUnSelectAll } = this.props;
     let { columns, results } = this.props.grid;
+
 
     return (
         <div className="ResultGrid">
@@ -13,7 +25,12 @@ class ResultGrid extends React.Component {
               <thead>
               <tr>
                 <th className="select-box">
-                  <input type="checkbox" onClick={e => e.stopPropagation()} />
+                  <input
+                      type="checkbox"
+                      onClick={e => e.stopPropagation()}
+                      onChange={this.toggleSelectAll.bind(this)}
+                      checked={this.isAllSelected()}
+                  />
                 </th>
                 <th className="index">#</th>
                 {columns.map(col => {
@@ -33,7 +50,7 @@ class ResultGrid extends React.Component {
                             type="checkbox"
                             onClick={e => e.stopPropagation()}
                             onChange={() => onSelectRow(result.id)}
-                            value={rowSelects[result.id]}
+                            checked={rowSelects[result.id]}
                         />
                       </td>
                       <td className="index">{index + 1}</td>

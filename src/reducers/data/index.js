@@ -52,6 +52,7 @@ const statusReducer = (state = {isLoading: false, error: null}, action) => {
 };
 
 export const TOGGLE_ROW_SELECT = 'TOGGLE_ROW_SELECT';
+export const ROW_SET_ALL = 'ROW_SET_ALL';
 
 const rowSelectsReducer = (state={}, action) => {
   switch (action.type) {
@@ -60,6 +61,8 @@ const rowSelectsReducer = (state={}, action) => {
         ...state,
         [action.payload]: !state[action.payload]
       };
+    case ROW_SET_ALL:
+      return action.payload;
     default:
       return state;
   }
