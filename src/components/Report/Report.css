@@ -1,3 +1,19 @@
 .Report .Question {
   display: flex;
+  margin-top: 10px;
+}
+
+.Report .TableContainer {
+  padding: 0;
+  background-color: #fff;
+}
+
+.Report .TableContainer table {
+  margin: 0;
+}
+
+.Report .GraphContainer {
+  padding: 10px 0 0 0;
+  margin-right: 20px;
+  background-color: #fff;
 }

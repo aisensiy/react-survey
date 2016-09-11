@@ -1,17 +1,40 @@
 import React from 'react';
-import GraphReport from './Report/Report';
+import { connect } from 'react-redux';
+import Report from './Report/Report';
+import { fetchData } from '../actions/data';
 
 class SurveyReportPage extends React.Component {
+  loadData() {
+    this.props.fetchData(this.props.surveyId);
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.surveyId !== prevProps.surveyId) {
+      this.loadData();
+    }
+  }
+
   render() {
     return (
       <div>
-        <GraphReport />
+        <Report />
       </div>
     );
   }
 }
 
-SurveyReportPage.propTypes = {};
-SurveyReportPage.defaultProps = {};
+const mapStateToProps = (state, { params }) => {
+  return {
+    surveyId: params.surveyId
+  };
+};
 
-export default SurveyReportPage;
+const mapDispatchToProps = {
+  fetchData
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyReportPage);

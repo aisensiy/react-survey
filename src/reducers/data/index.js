@@ -109,6 +109,47 @@ const resultToText = {
   }
 };
 
+export const resultsToReport = (state) => {
+  let { survey, results } = state;
+
+  if (!survey || !survey.questions) {
+    return [];
+  }
+
+  let canReportTypes = [QuestionTypes.CHECKBOXES, QuestionTypes.DROPDOWN, QuestionTypes.MULTI_CHOICE];
+
+  return survey.questions
+      .filter(q => canReportTypes.indexOf(q.type) !== -1)
+      .map(question => {
+        let id = question._id;
+        let optionMap = {};
+        question.options.forEach(o => {
+          optionMap[o._id] = {
+            content: o.content,
+            count: 0
+          };
+        });
+        results.forEach(result => {
+          let questionAnswer = result.result[id];
+          if (typeof questionAnswer === 'string') {
+            optionMap[questionAnswer].count++;
+          } else if (typeof questionAnswer === 'object') {
+            Object.keys(questionAnswer).forEach(answer => questionAnswer[answer] && optionMap[answer].count++);
+          }
+        });
+        return {
+          _id: id,
+          title: question.title,
+          stats: Object.keys(optionMap).map(key => {
+            return {
+              name: optionMap[key].content,
+              value: optionMap[key].count
+            };
+          })
+        };
+      });
+};
+
 export const resultsToGrid = (state) => {
   let { survey, results } = state;
 
