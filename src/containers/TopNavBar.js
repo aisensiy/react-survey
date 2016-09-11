@@ -10,9 +10,8 @@ class TopNavBar extends Component {
     return (
         <Nav pullRight>
           <NavDropdown eventKey={3} title={currentUser.username} id="basic-nav-dropdown">
-            <MenuItem href="#/user">New Password</MenuItem>
             <MenuItem divider/>
-            <MenuItem href="#/logout">Logout</MenuItem>
+            <MenuItem href="/logout">Logout</MenuItem>
           </NavDropdown>
         </Nav>
     );
@@ -21,8 +20,8 @@ class TopNavBar extends Component {
   unLoginView() {
     return (
         <Nav pullRight>
-          <NavItem eventKey={1} href="#/login">Login</NavItem>
-          <NavItem eventKey={1} href="#/register">Register</NavItem>
+          <NavItem eventKey={1} href="/login">Login</NavItem>
+          <NavItem eventKey={1} href="/register">Register</NavItem>
         </Nav>
 
     );

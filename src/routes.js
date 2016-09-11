@@ -53,10 +53,10 @@ export default function routes(store) {
         <Route path="logout" component={LogoutPage}/>
         <Route path="user/surveys" component={UserSurveysPage}/>
         <Route path="surveys/:surveyId" component={SurveyPage}/>
-        <Route path="user/surveys/:surveyId" component={UserSurveyPage}>
+        <Route path="user/surveys/:surveyId/" component={UserSurveyPage}>
+          <Route path="edit" component={EditSurveyPage}/>
+          <Route path="data" component={SurveyDataPage}/>
           <IndexRoute component={OverviewSurveyPage}/>
-          <Route path="/edit" component={EditSurveyPage}/>
-          <Route path="/data" component={SurveyDataPage}/>
         </Route>
       </Route>
   );
@@ -73,5 +73,13 @@ export const Path = {
 
   viewSurvey(survey) {
     return `/surveys/${survey._id}`;
+  },
+
+  login() {
+    return `/login`;
+  },
+
+  logout() {
+    return `/logout`;
   }
 };
