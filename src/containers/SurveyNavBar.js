@@ -11,6 +11,7 @@ class SurveyNavBar extends React.Component {
           <NavLink url={`/user/surveys/${params.surveyId}/`} location={location} text="Overview"/>
           <NavLink url={`/user/surveys/${params.surveyId}/edit`} location={location} text="Edit"/>
           <NavLink url={`/user/surveys/${params.surveyId}/data`} location={location} text="Data"/>
+          <NavLink url={`/user/surveys/${params.surveyId}/report`} location={location} text="Report"/>
         </ul>
     );
   }

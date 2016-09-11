@@ -9,6 +9,7 @@ import UserSurveyPage from './containers/UserSurveyPage';
 import EditSurveyPage from './containers/EditSurveyPage';
 import SurveyDataPage from './containers/SurveyDataPage';
 import OverviewSurveyPage from './containers/OverviewSurveyPage';
+import SurveyReportPage from './containers/SurveyReportPage';
 import SurveyPage from './containers/SurveyPage';
 
 import { fetchCurrentUserRequest, fetchCurrentUserRequestSuccess, fetchCurrentUserRequestFail } from './actions/login';
@@ -56,6 +57,7 @@ export default function routes(store) {
         <Route path="user/surveys/:surveyId/" component={UserSurveyPage}>
           <Route path="edit" component={EditSurveyPage}/>
           <Route path="data" component={SurveyDataPage}/>
+          <Route path="report" component={SurveyReportPage}/>
           <IndexRoute component={OverviewSurveyPage}/>
         </Route>
       </Route>
