@@ -33,9 +33,11 @@ class ReportFilter extends React.Component {
 
     return (
         <Modal show={this.state.showModal} onHide={this.close.bind(this)}>
-          <Modal.Header closeButton></Modal.Header>
+          <Modal.Header closeButton>
+            <Modal.Title>Select Filter For Report</Modal.Title>
+          </Modal.Header>
           <Modal.Body>
-            <ul>
+            <ul className="modal-report-filter">
               {survey.questions.filter(question => canReportTypes.indexOf(question.type) !== -1).map(question => {
                 return <li key={question._id}>
                     <QuestionOptionList

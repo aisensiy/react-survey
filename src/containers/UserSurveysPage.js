@@ -5,7 +5,7 @@ import SurveyList from '../containers/SurveyList';
 class UserSurveysPage extends React.Component {
   render() {
     return (
-        <div>
+        <div className="container">
           <NewSurvey />
           <SurveyList/>
         </div>

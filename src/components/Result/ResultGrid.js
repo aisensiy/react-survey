@@ -21,7 +21,7 @@ class ResultGrid extends React.Component {
         <div className="ResultGrid">
           <div className="grid-wrapper">
             <div className="toolbar">
-              <Button className={anySelected ? '' : 'invisible'} bsStyle="primary" bsSize="xsmall" onClick={() => onDeleteRow(results.filter(r => rowSelects[r._id]))}>Delete</Button>
+              <Button className={anySelected ? '' : 'disabled'} bsStyle="primary" bsSize="xsmall" onClick={() => onDeleteRow(results.filter(r => rowSelects[r._id]))}>Delete</Button>
             </div>
 
             <table className="table table-condensed table-hover table-bordered">

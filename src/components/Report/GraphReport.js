@@ -12,7 +12,7 @@ class GraphReport extends React.Component {
             <YAxis/>
             <Tooltip />
             <CartesianGrid strokeDasharray="3 3"/>
-            <Bar dataKey="value" fill="#8884d8" barSize={20} />
+            <Bar dataKey="value" fill="#337ab7" barSize={20} />
           </BarChart>
         </div>
     );

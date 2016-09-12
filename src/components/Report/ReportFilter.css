@@ -1,6 +1,13 @@
-.ReportFilter .filter-labels {
-  display: inline-block;
-  margin-left: 10px;
+.ReportFilter .filter-labels li {
+  margin: 3px 0;
+}
+
+.modal-report-filter li a {
+  color: black;
+}
+
+.modal-report-filter li .active a {
+  color: #337ab7;
 }
 
 .ReportFilter .filter-labels .remove-btn {
