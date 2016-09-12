@@ -29,7 +29,7 @@ class EditSurveyPage extends React.Component {
 
   render() {
     return (
-        <div className="EditSurveyPage">
+        <div className="EditSurveyPage container">
           <div className="clearfix EditPanel">
             <div className="col-md-8 Main">
               <SurveyPreview/>

@@ -1,19 +1,20 @@
 .SurveyNavBar {
   margin-bottom: 20px;
+  background-color: #fff;
 }
 
-.SurveyNavBar.nav-pills > li > a {
+.SurveyNavBar .nav-pills > li > a {
   border-radius: 0;
   color: #337ab7;
   border-bottom: 3px solid transparent;
 }
 
-.SurveyNavBar.nav-pills > li > a:hover, .nav-pills > li > a:focus {
+.SurveyNavBar .nav-pills > li > a:hover, .nav-pills > li > a:focus {
   color: #337ab7;
   background-color: transparent;
 }
 
-.SurveyNavBar.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+.SurveyNavBar .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
   color: #337ab7;
   background-color: transparent;
   border-bottom: 3px solid #337ab7;

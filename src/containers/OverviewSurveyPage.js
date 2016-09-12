@@ -3,7 +3,7 @@ import React from 'react';
 class OverviewSurveyPage extends React.Component {
   render() {
     return (
-      <div>View</div>
+      <div className="container">View</div>
     );
   }
 }

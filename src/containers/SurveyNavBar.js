@@ -7,12 +7,14 @@ class SurveyNavBar extends React.Component {
     let { params, location } = this.props;
 
     return (
-        <ul className="nav nav-pills SurveyNavBar">
-          <NavLink url={`/user/surveys/${params.surveyId}/`} location={location} text="Overview"/>
-          <NavLink url={`/user/surveys/${params.surveyId}/edit`} location={location} text="Edit"/>
-          <NavLink url={`/user/surveys/${params.surveyId}/data`} location={location} text="Data"/>
-          <NavLink url={`/user/surveys/${params.surveyId}/report`} location={location} text="Report"/>
-        </ul>
+        <div className="SurveyNavBar">
+          <ul className="nav nav-pills container">
+            <NavLink url={`/user/surveys/${params.surveyId}/`} location={location} text="Overview"/>
+            <NavLink url={`/user/surveys/${params.surveyId}/edit`} location={location} text="Edit"/>
+            <NavLink url={`/user/surveys/${params.surveyId}/data`} location={location} text="Data"/>
+            <NavLink url={`/user/surveys/${params.surveyId}/report`} location={location} text="Report"/>
+          </ul>
+        </div>
     );
   }
 }

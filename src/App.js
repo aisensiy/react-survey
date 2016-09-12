@@ -8,9 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <TopNavBar />
-        <div className="container">
-          { this.props.children }
-        </div>
+        { this.props.children }
       </div>
     );
   }

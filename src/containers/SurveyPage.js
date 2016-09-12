@@ -23,9 +23,11 @@ class SurveyPage extends React.Component {
 
   render() {
     return (
-        <div className="row SurveyPage">
-          <div className="col-md-8 col-md-offset-2 survey">
-            <Survey {...this.props}/>
+        <div className="container">
+          <div className="row SurveyPage">
+            <div className="col-md-8 col-md-offset-2 survey">
+              <Survey {...this.props}/>
+            </div>
           </div>
         </div>
     )
