@@ -11,6 +11,8 @@ import {
     DELETE_ROW
 } from '../reducers/data/index';
 
+import { SET_FILTER } from '../reducers/data/reportFilter';
+
 export const deleteRows = (deleteds) => dispatch => {
   return api.deleteResults(deleteds).then(() => {
     let deletedMap = keyBy(deleteds, e => e._id);
@@ -49,8 +51,8 @@ export const fetchData = (surveyId) => (dispatch) => {
     surveyId
   });
   return Promise.all([
-      api.fetchSurvey(surveyId),
-      api.fetchResults(surveyId)
+    api.fetchSurvey(surveyId),
+    api.fetchResults(surveyId)
   ]).then(values => {
     dispatch({
       type: FETCH_SURVEY_REQUEST_SUCCESS,
@@ -75,3 +77,29 @@ export const toggleRowSelect = (id) => ({
   type: TOGGLE_ROW_SELECT,
   payload: id
 });
+
+export const updateFilter = (filter, newValue) => {
+  console.log(filter, newValue);
+  let newFilter = {...filter};
+  if (!newFilter[newValue.question]) {
+    newFilter[newValue.question] = {};
+  }
+
+  if (!newValue.subOption) {
+    console.log(1);
+    console.log(newFilter[newValue.question]);
+    console.log(newValue.option);
+    newFilter[newValue.question][newValue.option] = newValue.value;
+  } else {
+    if (!newFilter[newValue.question][newValue.option]) {
+      newFilter[newValue.question][newValue.option] = {
+        [newValue.subOption]: newValue.value
+      }
+    }
+  }
+
+  return {
+    type: SET_FILTER,
+    payload: newFilter
+  };
+};

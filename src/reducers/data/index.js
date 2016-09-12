@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { QuestionTypes } from '../../constants/Questions';
 import gridModalReducer from './modal';
+import reportFilter from './reportFilter';
+import every from 'lodash/every';
 
 export const FETCH_DATA_REQUEST = 'RESULT_FETCH_DATA_REQUEST';
 export const FETCH_DATA_REQUEST_SUCCESS = 'RESULT_FETCH_DATA_REQUEST_SUCCESS';
@@ -80,8 +82,11 @@ export default combineReducers({
   results: resultsReducer,
   status: statusReducer,
   gridModal: gridModalReducer,
-  rowSelects: rowSelectsReducer
+  rowSelects: rowSelectsReducer,
+  reportFilter: reportFilter
 });
+
+export const canReportTypes = [QuestionTypes.CHECKBOXES, QuestionTypes.DROPDOWN, QuestionTypes.MULTI_CHOICE];
 
 export const getModal = (state) => state.gridModal;
 export const getColumns = (state) => state.survey.questions.map(question => {
@@ -109,16 +114,55 @@ const resultToText = {
   }
 };
 
+export const hasFilterMap = (state) => {
+  let reportFilter = state.reportFilter;
+  let hasFilterMap = {};
+  Object.keys(reportFilter).forEach(questionId => {
+    let answer = reportFilter[questionId];
+    let hasFilter = Object.keys(answer).some(answerId => {
+      if (typeof answer[answerId] === 'boolean') {
+        return answer[answerId];
+      } else if (typeof answer[answerId] === 'object') {
+        return Object.keys(answer[answerId]).some(k => answer[answerId][key]);
+      }
+    });
+    hasFilterMap[questionId] = hasFilter;
+  });
+  return hasFilterMap;
+};
+
 export const resultsToReport = (state) => {
-  let { survey, results } = state;
+  let { survey, results, reportFilter } = state;
 
   if (!survey || !survey.questions) {
-    return [];
+    return {
+      reportResult: [],
+      results: []
+    };
   }
 
-  let canReportTypes = [QuestionTypes.CHECKBOXES, QuestionTypes.DROPDOWN, QuestionTypes.MULTI_CHOICE];
+  let filterMap = hasFilterMap(state);
+  console.log(filterMap);
 
-  return survey.questions
+  let filtedResults = results.filter(result => {
+    return every(Object.keys(result.result), questionId => {
+      if (!filterMap[questionId]) return true;
+
+      let answer = result.result[questionId];
+      if (typeof answer === 'string') {
+        console.log('ANSWER');
+        console.log(answer);
+        console.log(reportFilter[questionId][answer]);
+        return reportFilter[questionId][answer];
+      } else if (typeof answer === 'object') {
+        return Object.keys(answer).some(subKey => reportFilter[questionId][subKey]);
+      } else {
+        return true;
+      }
+    });
+  });
+
+  let reportResult = survey.questions
       .filter(q => canReportTypes.indexOf(q.type) !== -1)
       .map(question => {
         let id = question._id;
@@ -129,7 +173,7 @@ export const resultsToReport = (state) => {
             count: 0
           };
         });
-        results.forEach(result => {
+        filtedResults.forEach(result => {
           let questionAnswer = result.result[id];
           if (typeof questionAnswer === 'string') {
             optionMap[questionAnswer].count++;
@@ -148,6 +192,11 @@ export const resultsToReport = (state) => {
           })
         };
       });
+
+  return {
+    reportResult,
+    results: filtedResults
+  };
 };
 
 export const resultsToGrid = (state) => {

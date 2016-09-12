@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Report from './Report/Report';
+import ReportFilter from './Report/ReportFilter';
 import { fetchData } from '../actions/data';
 
 class SurveyReportPage extends React.Component {
@@ -21,6 +22,7 @@ class SurveyReportPage extends React.Component {
   render() {
     return (
       <div>
+        <ReportFilter />
         <Report />
       </div>
     );

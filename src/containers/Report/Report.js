@@ -4,7 +4,7 @@ import { resultsToReport } from '../../reducers/data';
 
 const mapStateToProps = (state) => {
   return {
-    data: resultsToReport(state.data)
+    ...resultsToReport(state.data)
   }
 };
 
