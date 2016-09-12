@@ -65,6 +65,10 @@ export default function routes(store) {
 }
 
 export const Path = {
+  survey(survey) {
+    return `/user/surveys/${survey._id}/`;
+  },
+
   editSurvey(survey) {
     return `/user/surveys/${survey._id}/edit`;
   },

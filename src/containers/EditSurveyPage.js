@@ -6,7 +6,7 @@ import SurveyPreview from './SurveyPreview/SurveyPreview';
 import EditTab from './EditTab';
 import EditFooter from './EditFooter';
 
-import { fetchSurvey } from '../actions/edit_survey'
+import { fetchSurvey } from '../actions/edit_survey';
 
 import { AutoAffix } from 'react-overlays';
 

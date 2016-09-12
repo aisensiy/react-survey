@@ -6,6 +6,9 @@ export const SUBMIT_SURVEY_FAIL = 'SUBMIT_SURVEY_FAIL';
 export const FETCH_SURVEY_REQUEST = 'SURVEY_FETCH_SURVEY_REQUEST';
 export const FETCH_SURVEY_REQUEST_SUCCESS = 'SURVEY_FETCH_SURVEY_REQUEST_SUCCESS';
 export const FETCH_SURVEY_REQUEST_FAIL = 'SURVEY_FETCH_SURVEY_REQUEST_FAIL';
+export const UPDATE_SURVEY = 'UPDATE_SURVEY';
+export const UPDATE_SURVEY_SUCCESS = 'UPDATE_SURVEY_SUCCESS';
+export const UPDATE_SURVEY_FAIL = 'UPDATE_SURVEY_FAIL';
 
 export const fetchReducer = (state={survey: {_id: '', questions: []}, isLoading: false, error: null}, action) => {
   switch (action.type) {

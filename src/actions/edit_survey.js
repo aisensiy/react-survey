@@ -17,10 +17,14 @@ export const normalizeSurvey = (survey) => {
     question_order: question_order,
     current_question_id: '',
     original: {
-      _rev: survey._rev
+      ...survey
     }
   }
 };
+
+export const resetDeleteState = () => ({
+  type: 'RESET_DELETE_SURVEY_REQUEST'
+});
 
 export const switchTab = (tab) => ({
   type: 'EDIT_SURVEY_SWITCH_TAB',

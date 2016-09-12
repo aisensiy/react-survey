@@ -1,0 +1,30 @@
+.OverviewPage > div {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.OverviewPage .card {
+  padding: 10px 15px;
+  background-color: #fff;
+  box-sizing: border-box;
+  white-space: nowrap;
+  line-height: 2em;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.OverviewPage .card .title {
+  float: left;
+}
+
+.OverviewPage .card .content {
+  float: right;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.OverviewPage footer {
+  margin-top: 20px;
+}
