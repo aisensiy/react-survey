@@ -16,7 +16,7 @@ class Report extends React.Component {
     let { reportResult, results } = this.props;
     return (
         <div className="Report">
-          <h3>Total Data: {results.length}</h3>
+          <h4>Total Data: {results.length}</h4>
           {reportResult.map((d, index) => {
             return (
                 <ReportItem data={d} key={d._id}/>

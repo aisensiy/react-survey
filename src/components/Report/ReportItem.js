@@ -29,7 +29,7 @@ class ReportItem extends React.Component {
     return (
         <div className="container">
           <div className="row">
-            <div className="col-md-12">{data.title}</div>
+            <div>{data.title}</div>
           </div>
           <div className="row Question" key={data.title}>
             <div className="col-md-7 GraphContainer">

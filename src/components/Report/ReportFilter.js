@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Modal, Label } from 'react-bootstrap';
+import { Button, Modal, Label, Glyphicon } from 'react-bootstrap';
 import QuestionOptionList from './QuestionOptionList';
 import { canReportTypes } from '../../reducers/data';
+import './ReportFilter.css';
 
 class ReportFilter extends React.Component {
   constructor(props) {
@@ -72,17 +73,23 @@ class ReportFilter extends React.Component {
     let { updateFilter, reportFilter } = this.props;
 
     return (
-        <div>
-          <Button bsStyle="primary" bsSize="xsmall" onClick={this.open.bind(this)}>Filter</Button>
-          {this.filterLabels().map(({ question, option }) => {
-            return (
-                <Label bsStyle="info">{question.title} { ' ' } : { ' ' } {option.content}
-                  <span onClick={() => {
-                    updateFilter(reportFilter, {question: question._id, option: option._id, value: false});
-                  }}>x</span>
-                </Label>
-            );
-          })}
+        <div className="ReportFilter">
+          <Button bsStyle="primary" bsSize="xsmall" onClick={this.open.bind(this)}>
+            <Glyphicon glyph="filter"/>
+          </Button>
+          <ul className="filter-labels list-inline">
+            {this.filterLabels().map(({ question, option }) => {
+              return (
+                  <li key={`${question._id}-${option._id}`}>
+                    <Label bsStyle="info">{question.title}: { ' ' } {option.content} { ' ' }
+                      <span className="remove-btn" onClick={() => {
+                        updateFilter(reportFilter, {question: question._id, option: option._id, value: false});
+                      }}>x</span>
+                    </Label>
+                  </li>
+              );
+            })}
+          </ul>
           {this.renderModal()}
         </div>
     );

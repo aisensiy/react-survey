@@ -1,0 +1,8 @@
+.ReportFilter .filter-labels {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.ReportFilter .filter-labels .remove-btn {
+  cursor: pointer;
+}
