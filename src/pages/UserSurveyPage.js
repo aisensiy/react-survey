@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SurveyNavBar from './SurveyNavBar';
+import SurveyNavBar from './../containers/SurveyNavBar';
 import { fetchSurvey } from '../actions/edit_survey'
 import './EditSurveyPage.css';
 

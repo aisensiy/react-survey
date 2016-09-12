@@ -2,9 +2,9 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import SurveyPreview from './SurveyPreview/SurveyPreview';
-import EditTab from './EditTab';
-import EditFooter from './EditFooter';
+import SurveyPreview from './../containers/SurveyPreview/SurveyPreview';
+import EditTab from './../containers/EditTab';
+import EditFooter from './../containers/EditFooter';
 
 import { fetchSurvey } from '../actions/edit_survey';
 

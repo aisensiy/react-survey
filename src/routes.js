@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './App';
-import RegisterPage from './containers/RegisterPage';
-import LoginPage from './containers/LoginPage';
-import UserSurveysPage from './containers/UserSurveysPage';
-import LogoutPage from './containers/LogoutPage';
-import UserSurveyPage from './containers/UserSurveyPage';
-import EditSurveyPage from './containers/EditSurveyPage';
-import SurveyDataPage from './containers/SurveyDataPage';
-import OverviewSurveyPage from './containers/OverviewSurveyPage';
-import SurveyReportPage from './containers/SurveyReportPage';
-import SurveyPage from './containers/SurveyPage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import UserSurveysPage from './pages/UserSurveysPage';
+import LogoutPage from './pages/LogoutPage';
+import UserSurveyPage from './pages/UserSurveyPage';
+import EditSurveyPage from './pages/EditSurveyPage';
+import SurveyDataPage from './pages/SurveyDataPage';
+import OverviewSurveyPage from './pages/OverviewSurveyPage';
+import SurveyReportPage from './pages/SurveyReportPage';
+import SurveyPage from './pages/SurveyPage';
 
 import { fetchCurrentUserRequest, fetchCurrentUserRequestSuccess, fetchCurrentUserRequestFail } from './actions/login';
 import { home } from './reducers/session';

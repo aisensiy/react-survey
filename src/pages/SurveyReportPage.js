@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Report from './Report/Report';
-import ReportFilter from './Report/ReportFilter';
+import Report from './../containers/Report/Report';
+import ReportFilter from './../containers/Report/ReportFilter';
 import { fetchData } from '../actions/data';
 
 class SurveyReportPage extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ResultGrid from './Result/ResultGrid';
-import ResultModal from './Result/ResultModal';
+import ResultGrid from './../containers/Result/ResultGrid';
+import ResultModal from './../containers/Result/ResultModal';
 import { fetchData } from '../actions/data';
 
 class SurveyDataPage extends React.Component {

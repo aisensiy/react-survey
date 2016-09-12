@@ -12,7 +12,6 @@ export const createUser = (params) => {
   });
 };
 
-
 export const login = (email, password) => {
   return db.get(email).then(user => {
     let u = {...user};
