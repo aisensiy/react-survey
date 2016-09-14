@@ -1,5 +1,6 @@
 {
   "name": "react-survey",
+  "homepage": "http://aisensiy.github.io/react-survey",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
