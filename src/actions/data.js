@@ -79,16 +79,12 @@ export const toggleRowSelect = (id) => ({
 });
 
 export const updateFilter = (filter, newValue) => {
-  console.log(filter, newValue);
   let newFilter = {...filter};
   if (!newFilter[newValue.question]) {
     newFilter[newValue.question] = {};
   }
 
   if (!newValue.subOption) {
-    console.log(1);
-    console.log(newFilter[newValue.question]);
-    console.log(newValue.option);
     newFilter[newValue.question][newValue.option] = newValue.value;
   } else {
     if (!newFilter[newValue.question][newValue.option]) {

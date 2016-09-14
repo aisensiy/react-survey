@@ -36,7 +36,9 @@ export const createSurveyRequest = (email) => dispatch => {
     email,
     payload: initSurvey
   });
-  return api.createSurvey(email, initSurvey).then(res => dispatch(createSurveyRequestSuccess(res))).catch(err => dispatch(createSurveyRequestFail(err)));
+  return api.createSurvey(email, initSurvey)
+      .then(res => dispatch(createSurveyRequestSuccess(res)))
+      .catch(err => dispatch(createSurveyRequestFail(err)));
 };
 
 export const resetCreateSurvey = () => ({

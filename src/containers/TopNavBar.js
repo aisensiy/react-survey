@@ -34,7 +34,7 @@ class TopNavBar extends Component {
           <Navbar.Header>
             <Navbar.Brand>
               <a href="/">
-                Eisen.Survey
+                React Survey
               </a>
             </Navbar.Brand>
             <Navbar.Toggle />
