@@ -36,9 +36,6 @@ class SurveyPreview extends React.Component {
               isActive={isHeaderActive}
               onActive={onHeaderActive}/>
           {this.props.children}
-          <div className="form-group">
-            <button className="btn btn-primary" type="button">Submit</button>
-          </div>
         </form>
       </div>
     );
