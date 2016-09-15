@@ -13,7 +13,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-        <div className="col-md-4 col-md-offset-4">
+        <div className="col-md-4 col-md-offset-4" style={{marginTop: '40px'}}>
           <LoginFormView {...this.props}/>
         </div>
     )

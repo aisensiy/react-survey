@@ -14,6 +14,7 @@ class RegisterForm extends Component {
     let { submitting, handleSubmit } = this.props;
     return (
         <form onSubmit={handleSubmit}>
+          <legend>Register</legend>
           <div className="form-group">
             <label htmlFor="">User Name</label>
             <Field
