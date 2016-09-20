@@ -35,7 +35,7 @@ export const login = (email, password) => {
 };
 
 export const logout = () => {
-  return db.remove('session');
+  return db.get('session').then(data => db.remove(data));
 };
 
 export const fetchCurrentUser = () => {
