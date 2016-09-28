@@ -30,13 +30,13 @@ export const createSurveyRequestFail = (err) => ({
   payload: err
 });
 
-export const createSurveyRequest = (email) => dispatch => {
+export const createSurveyRequest = (username) => dispatch => {
   dispatch({
     type: 'CREATE_SURVEY_REQUEST',
-    email,
+    username,
     payload: initSurvey
   });
-  return api.createSurvey(email, initSurvey)
+  return api.createSurvey(username, initSurvey)
       .then(res => dispatch(createSurveyRequestSuccess(res)))
       .catch(err => dispatch(createSurveyRequestFail(err)));
 };

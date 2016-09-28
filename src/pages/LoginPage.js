@@ -30,7 +30,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = () => {
   return {
     onSubmit: (values, dispatch) => {
-      return dispatch(loginRequest(values.email, values.password)).then(res => {
+      return dispatch(loginRequest(values.username, values.password)).then(res => {
         dispatch(loginRequestSuccess(res));
         return Promise.resolve(res);
       }).catch(err => {

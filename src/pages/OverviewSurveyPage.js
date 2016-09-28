@@ -35,7 +35,7 @@ class OverviewSurveyPage extends React.Component {
   }
 
   surveyUrl(survey) {
-    return location.origin + Path.viewSurvey(survey);
+    return location.origin + '/#' + Path.viewSurvey(survey);
   }
 
   render() {
@@ -59,10 +59,10 @@ class OverviewSurveyPage extends React.Component {
                 </div>
                 <div className="content">
                   <Toggle
-                      checked={!!survey.published}
+                      checked={!!survey.receiveResults}
                       aria-labelledby="biscuit-label"
                       onChange={() => {
-                        survey.published = !survey.published;
+                        survey.receiveResults = !survey.receiveResults;
                         updateSurvey(survey);
                       }} />
                 </div>
@@ -73,10 +73,10 @@ class OverviewSurveyPage extends React.Component {
                 </div>
                 <div className="content">
                   <Toggle
-                      checked={!!survey.shareResult}
+                      checked={!!survey.publishResults}
                       aria-labelledby="biscuit-label"
                       onChange={() => {
-                        survey.shareResult = !survey.shareResult;
+                        survey.publishResults = !survey.publishResults;
                         updateSurvey(survey);
                       }} />
                 </div>

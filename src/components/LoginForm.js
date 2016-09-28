@@ -18,9 +18,9 @@ class LoginForm extends Component {
           <div className="form-group">
             <label htmlFor="">Email</label>
             <Field
-                name="email"
+                name="username"
                 component={renderInput}
-                type="email"/>
+                type="text"/>
           </div>
           <div className="form-group">
             <label htmlFor="">Password</label>

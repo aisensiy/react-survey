@@ -142,7 +142,6 @@ export const resultsToReport = (state) => {
   }
 
   let filterMap = hasFilterMap(state);
-  console.log(filterMap);
 
   let filtedResults = results.filter(result => {
     return every(Object.keys(result.result), questionId => {

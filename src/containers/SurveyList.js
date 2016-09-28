@@ -6,7 +6,7 @@ import { fetchSurveysRequest } from '../actions/surveys';
 
 class SurveyList extends React.Component {
   loadData() {
-    this.props.fetchSurveys(this.props.currentUser.email);
+    this.props.fetchSurveys(this.props.currentUser);
   }
 
   componentWillMount() {

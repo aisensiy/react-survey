@@ -1,100 +1,77 @@
 import  PouchDB from 'pouchdb';
 import newId from '../util/idGenerator';
+import axios from 'axios';
+import { hashHistory } from 'react-router';
 
-window.PouchDB = PouchDB;
-
-const db = new PouchDB('survey');
+const fetcher = axios.create({
+  baseURL: 'http://localhost:8000',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authentication': localStorage.session
+  },
+  transformResponse: [function (data) {
+    if (data) {
+      return JSON.parse(data.replace(/"id"/g, '"_id"').replace(/"objectId"/g, '"_id"'));
+    } else {
+      return data;
+    }
+  }]
+});
 
 export const createUser = (params) => {
-  return db.put({
-    ...params,
-    _id: params.email
-  });
+  return fetcher.post("/users", params).then(res => res.data);
 };
 
-export const login = (email, password) => {
-  return db.get(email).then(user => {
-    let u = {...user};
-    delete u['_rev'];
-
-    db.get('session').then(cur => { // update session
-      return db.put({
-        ...u,
-        _id: 'session',
-        _rev: cur._rev
-      });
-    }).catch(() => { // or create new session
-      return db.put({
-        ...u,
-        _id: 'session'
-      });
-    });
-
-    return Promise.resolve(user);
+export const login = (username, password) => {
+  return fetcher.post("/authentication", {
+    username,
+    password
+  }).then(res => {
+    localStorage.session = res.data.sessionToken;
+    fetcher.defaults.headers.common['Authentication'] = res.data.sessionToken;
+    return res.data;
   });
 };
 
 export const logout = () => {
-  return db.get('session').then(data => db.remove(data));
+  delete localStorege.session;
+  return Promise.resolve();
 };
 
 export const fetchCurrentUser = () => {
-  return db.get('session');
+  return fetcher.get("authentication").then(res => {
+    fetcher.defaults.headers.common['Authentication'] = res.data.sessionToken;
+    return res.data;
+  });
 };
 
-export const fetchUserSurveys = (email) => {
-  return db.allDocs({
-    include_docs: true,
-    startkey: `${email}-survey-`,
-    endkey: `${email}-survey-\uffff`
-  }).then(res => {
-    return Promise.resolve(res.rows.map(row => row.doc));
-  });
+export const fetchUserSurveys = (user) => {
+  return fetcher.get(`/users/${user.username}/surveys`).then(res => res.data);
 };
 
 export const fetchResults = (surveyId) => {
-  return db.allDocs({
-    include_docs: true,
-    startkey: `result-${surveyId}-`,
-    endkey: `result-${surveyId}-\uffff`
-  }).then(res => {
-    return Promise.resolve(res.rows.map(row => row.doc));
-  });
+  return fetcher.get(`/surveys/${surveyId}/results`).then(res => res.data);
 };
 
-export const createSurvey = (email, initSurvey) => {
-  return db.put({
-    ...initSurvey,
-    _id: `${email}-survey-${newId()}`
-  }).then(res => {
-    return db.get(res.id);
-  });
+export const createSurvey = (username, initSurvey) => {
+  return fetcher.post(`/users/${username}/surveys`, initSurvey).then(res => res.data);
 };
 
 export const saveResult = (surveyId, result) => {
-  return db.put({
-    _id: `result-${surveyId}-${newId()}`,
-    result
-  });
+  return fetcher.post(`/surveys/${surveyId}/results`, result);
 };
 
 
 export const fetchSurvey = (surveyId) => {
-  return db.get(surveyId);
+  return fetcher.get(`/surveys/${surveyId}`).then(res => res.data);
 };
 
 export const deleteSurvey = surveyId => db.remove(surveyId);
 
 export const updateSurvey = (survey) => {
-  return db.put(survey);
+  return fetcher.put(`/surveys/${survey._id}`, survey).then(res => res.data);
 };
 
-export const deleteResults = (results) => {
-  return db.bulkDocs(results.map(result => {
-    return {
-      _id: result._id,
-      _rev: result._rev,
-      _deleted: true
-    };
-  }));
+export const deleteResults = (survey, results) => {
+  return Promise.all(results.map(result => fetcher.delete(`/surveys/${survey._id}/results/${result._id}`)));
 };
