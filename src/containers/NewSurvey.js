@@ -18,7 +18,7 @@ class NewSurvey extends React.Component {
     return (
       <NewSurveyView
           isLoading={this.props.isLoading}
-          onClick={() => this.props.createSurvey(this.props.currentUser.username)}
+          onClick={() => this.props.createSurvey(this.props.currentUser._id)}
       />
     );
   }

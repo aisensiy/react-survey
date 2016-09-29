@@ -4,7 +4,7 @@ import axios from 'axios';
 import { hashHistory } from 'react-router';
 
 const fetcher = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: process.env.REACT_APP_ENDPOINT,
   headers: {
     'Content-Type': 'application/json',
     'Authentication': localStorage.session
@@ -46,15 +46,15 @@ export const fetchCurrentUser = () => {
 };
 
 export const fetchUserSurveys = (user) => {
-  return fetcher.get(`/users/${user.username}/surveys`).then(res => res.data);
+  return fetcher.get(`/users/${user._id}/surveys`).then(res => res.data);
 };
 
 export const fetchResults = (surveyId) => {
   return fetcher.get(`/surveys/${surveyId}/results`).then(res => res.data);
 };
 
-export const createSurvey = (username, initSurvey) => {
-  return fetcher.post(`/users/${username}/surveys`, initSurvey).then(res => res.data);
+export const createSurvey = (userId, initSurvey) => {
+  return fetcher.post(`/users/${userId}/surveys`, initSurvey).then(res => res.data);
 };
 
 export const saveResult = (surveyId, result) => {

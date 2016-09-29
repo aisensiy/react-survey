@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Alert } from 'react-bootstrap';
 import Survey from '../components/Survey/Survey';
 import { getSurvey, getFetchError, getFetchStatus, getSubmitStatus } from '../reducers/survey';
 import { submitResult, fetchSurvey } from '../actions/survey';
@@ -24,6 +25,7 @@ class SurveyPage extends React.Component {
   render() {
     return (
         <div className="container">
+          {this.props.survey.receiveResults ? '' : <Alert bsStyle="danger">Do not collection result any more</Alert>}
           <div className="row SurveyPage">
             <div className="col-md-8 col-md-offset-2 survey">
               <Survey {...this.props}/>
