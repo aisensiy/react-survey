@@ -5,6 +5,7 @@
   "devDependencies": {
     "react-scripts": "0.2.3"
   },
+  "homepage": "http://aisensiy.github.io/react-survey",
   "dependencies": {
     "axios": "^0.14.0",
     "bootstrap": "^3.3.7",
