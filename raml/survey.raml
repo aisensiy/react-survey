@@ -1,0 +1,168 @@
+#%RAML 0.8
+title: Survey Api
+baseUri: localhost
+mediaType: application/json
+protocols:
+  - HTTP
+version: 1.0.0
+
+schemas:
+  - LoginParams: !include schemas/LoginParam.schema.json
+  - ErrorMessage: !include schemas/ErrorMessage.schema.json
+  - LoginResponse: !include schemas/LoginResponse.schema.json
+  - UserResponse: !include schemas/UserResponse.schema.json
+  - Surveys: !include schemas/Surveys.schema.json
+  - Survey: !include schemas/Survey.schema.json
+  - PutSurvey: !include schemas/PutSurvey.schema.json
+
+/authentication:
+  post:
+    body:
+      schema: LoginParams
+    responses:
+      200:
+        body:
+          schema: LoginResponse
+      400:
+        body:
+          schema: ErrorMessage
+  get:
+    headers:
+      Authentication:
+        type: string
+        required: true
+    responses:
+      200:
+        body:
+          schema: LoginResponse
+      401:
+  delete:
+    responses:
+      204:
+
+/users:
+  post:
+    description: Register
+    body:
+      schema: |
+        {
+          "type": "object",
+          "properties": {
+            "username": { "type": "string" },
+            "email": { "type": "string" },
+            "password": { "type": "string" }
+          }
+        }
+    responses:
+      201:
+        body:
+          schema: UserResponse
+      400:
+        body:
+          schema: ErrorMessage
+  /{userId}:
+    get:
+      description: Get user info
+      headers:
+        Authentication:
+          type: string
+          required: true
+      responses:
+        200:
+          body:
+            schema: UserResponse
+        404:
+    /surveys:
+      post:
+        headers:
+          Authentication:
+            type: string
+            required: true
+        description: Create new survey
+        body:
+          schema: |
+            {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "subTitle": { "type": "string" },
+                "questions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+        responses:
+          201:
+          400:
+          403:
+            description: user not currentUser
+      get:
+        description: Get user's surveys
+        headers:
+          Authentication:
+            type: string
+            required: true
+        responses:
+          200:
+            body:
+              schema: Surveys
+          403:
+            description: user not currentUser
+/surveys:
+  /{surveyId}:
+    get:
+      description: Get survey info
+      responses:
+        200:
+          body:
+            schema: Survey
+        404:
+          description: false survey.receiveResults and currentUser not survey.author
+    put:
+      headers:
+        Authentication:
+          type: string
+          required: true
+      description: Update survey info
+      body:
+        schema: PutSurvey
+      responses:
+        204:
+        404:
+    /results:
+      get:
+        description: Get all survey results
+        responses:
+          200:
+            body:
+              schema: |
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+          403:
+            description: false surveyPublishResults and survey.author not currentUser
+      post:
+        description: Fill survey
+        body:
+          schema: |
+            {
+              "type": "object"
+            }
+        responses:
+          201:
+          400:
+      /{resultId}:
+        delete:
+          headers:
+            Authentication:
+              type: string
+              required: true
+          responses:
+            204:
+            404:

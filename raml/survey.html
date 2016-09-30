@@ -1,0 +1,184 @@
+<!DOCTYPE HTML><html><head><title>Survey Api API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 4.0.0-beta1"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Survey Api API documentation <small>version 1.0.0</small></h1><p>localhost</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="authentication" class="panel-title">/authentication</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_authentication"><span class="parent"></span>/authentication</a> <span class="methods"><a href="#authentication_post"><span class="badge badge_post">post</span></a> <a href="#authentication_get"><span class="badge badge_get">get</span></a> <a href="#authentication_delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_authentication" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#authentication_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"></div><div class="clearfix"></div></div><div onclick="window.location.href = '#authentication_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"></div><div class="clearfix"></div></div><div onclick="window.location.href = '#authentication_delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="authentication_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/authentication</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#authentication_post_request" data-toggle="tab">Request</a></li><li><a href="#authentication_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authentication_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>LoginParams</code></pre></div><div class="tab-pane" id="authentication_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>LoginResponse</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>ErrorMessage</code></pre></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="authentication_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/authentication</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#authentication_get_request" data-toggle="tab">Request</a></li><li><a href="#authentication_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authentication_get_request"><h3>Headers</h3><ul><li><strong>Authentication</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="authentication_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>LoginResponse</code></pre><h2>HTTP status code <a href="http://httpstatus.es/401" target="_blank">401</a></h2></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="authentication_delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent"></span>/authentication</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#authentication_delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="authentication_delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="users" class="panel-title">/users</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users"><span class="parent"></span>/users</a> <span class="methods"><a href="#users_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_users" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Register</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/users</h4></div><div class="modal-body"><div class="alert alert-info"><p>Register</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users_post_request" data-toggle="tab">Request</a></li><li><a href="#users_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users_post_request"><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object",
+  "properties": {
+    "username": { "type": "string" },
+    "email": { "type": "string" },
+    "password": { "type": "string" }
+  }
+}
+</code></pre></div><div class="tab-pane" id="users_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>UserResponse</code></pre><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>ErrorMessage</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__userId_"><span class="parent">/users</span>/{userId}</a> <span class="methods"><a href="#users__userId__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__userId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__userId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get user info</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__userId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users</span>/{userId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get user info</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__userId__get_request" data-toggle="tab">Request</a></li><li><a href="#users__userId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__userId__get_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Authentication</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__userId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>UserResponse</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_users__userId__surveys"><span class="parent">/users/{userId}</span>/surveys</a> <span class="methods"><a href="#users__userId__surveys_post"><span class="badge badge_post">post</span></a> <a href="#users__userId__surveys_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_users__userId__surveys" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#users__userId__surveys_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Create new survey</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#users__userId__surveys_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get user&#39;s surveys</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__userId__surveys_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/users/{userId}</span>/surveys</h4></div><div class="modal-body"><div class="alert alert-info"><p>Create new survey</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__userId__surveys_post_request" data-toggle="tab">Request</a></li><li><a href="#users__userId__surveys_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__userId__surveys_post_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Authentication</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "subTitle": { "type": "string" },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}
+</code></pre></div><div class="tab-pane" id="users__userId__surveys_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>user not currentUser</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="users__userId__surveys_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/users/{userId}</span>/surveys</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get user&#39;s surveys</p></div><ul class="nav nav-tabs"><li class="active"><a href="#users__userId__surveys_get_request" data-toggle="tab">Request</a></li><li><a href="#users__userId__surveys_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="users__userId__surveys_get_request"><h3>URI Parameters</h3><ul><li><strong>userId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Authentication</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="users__userId__surveys_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>Surveys</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>user not currentUser</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="surveys" class="panel-title">/surveys</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_surveys__surveyId_"><span class="parent">/surveys</span>/{surveyId}</a> <span class="methods"><a href="#surveys__surveyId__get"><span class="badge badge_get">get</span></a> <a href="#surveys__surveyId__put"><span class="badge badge_put">put</span></a></span></h4></div><div id="panel_surveys__surveyId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#surveys__surveyId__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get survey info</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#surveys__surveyId__put'" class="list-group-item"><span class="badge badge_put">put</span><div class="method_description"><p>Update survey info</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="surveys__surveyId__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/surveys</span>/{surveyId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get survey info</p></div><ul class="nav nav-tabs"><li class="active"><a href="#surveys__surveyId__get_request" data-toggle="tab">Request</a></li><li><a href="#surveys__surveyId__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="surveys__surveyId__get_request"><h3>URI Parameters</h3><ul><li><strong>surveyId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="surveys__surveyId__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>Survey</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>false survey.receiveResults and currentUser not survey.author</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="surveys__surveyId__put"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_put">put</span> <span class="parent">/surveys</span>/{surveyId}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Update survey info</p></div><ul class="nav nav-tabs"><li class="active"><a href="#surveys__surveyId__put_request" data-toggle="tab">Request</a></li><li><a href="#surveys__surveyId__put_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="surveys__surveyId__put_request"><h3>URI Parameters</h3><ul><li><strong>surveyId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Authentication</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>Survey</code></pre></div><div class="tab-pane" id="surveys__surveyId__put_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_surveys__surveyId__results"><span class="parent">/surveys/{surveyId}</span>/results</a> <span class="methods"><a href="#surveys__surveyId__results_get"><span class="badge badge_get">get</span></a> <a href="#surveys__surveyId__results_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_surveys__surveyId__results" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#surveys__surveyId__results_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Get all survey results</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#surveys__surveyId__results_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Fill survey</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="surveys__surveyId__results_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/surveys/{surveyId}</span>/results</h4></div><div class="modal-body"><div class="alert alert-info"><p>Get all survey results</p></div><ul class="nav nav-tabs"><li class="active"><a href="#surveys__surveyId__results_get_request" data-toggle="tab">Request</a></li><li><a href="#surveys__surveyId__results_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="surveys__surveyId__results_get_request"><h3>URI Parameters</h3><ul><li><strong>surveyId</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="surveys__surveyId__results_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "array",
+  "items": {
+    "type": "object"
+  }
+}
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/403" target="_blank">403</a></h2><p>false surveyPublishResults and survey.author not currentUser</p></div></div></div></div></div></div><div class="modal fade" tabindex="0" id="surveys__surveyId__results_post"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent">/surveys/{surveyId}</span>/results</h4></div><div class="modal-body"><div class="alert alert-info"><p>Fill survey</p></div><ul class="nav nav-tabs"><li class="active"><a href="#surveys__surveyId__results_post_request" data-toggle="tab">Request</a></li><li><a href="#surveys__surveyId__results_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="surveys__surveyId__results_post_request"><h3>URI Parameters</h3><ul><li><strong>surveyId</strong>: <em>required (string)</em></li></ul><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{
+  "type": "object"
+}
+</code></pre></div><div class="tab-pane" id="surveys__surveyId__results_post_response"><h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_surveys__surveyId__results__resultId_"><span class="parent">/surveys/{surveyId}/results</span>/{resultId}</a> <span class="methods"><a href="#surveys__surveyId__results__resultId__delete"><span class="badge badge_delete">delete</span></a></span></h4></div><div id="panel_surveys__surveyId__results__resultId_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#surveys__surveyId__results__resultId__delete'" class="list-group-item"><span class="badge badge_delete">delete</span><div class="method_description"></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="surveys__surveyId__results__resultId__delete"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_delete">delete</span> <span class="parent">/surveys/{surveyId}/results</span>/{resultId}</h4></div><div class="modal-body"><ul class="nav nav-tabs"><li class="active"><a href="#surveys__surveyId__results__resultId__delete_request" data-toggle="tab">Request</a></li><li><a href="#surveys__surveyId__results__resultId__delete_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="surveys__surveyId__results__resultId__delete_request"><h3>URI Parameters</h3><ul><li><strong>surveyId</strong>: <em>required (string)</em></li><li><strong>resultId</strong>: <em>required (string)</em></li></ul><h3>Headers</h3><ul><li><strong>Authentication</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="surveys__surveyId__results__resultId__delete_response"><h2>HTTP status code <a href="http://httpstatus.es/204" target="_blank">204</a></h2><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#authentication">/authentication</a></li><li><a href="#users">/users</a></li><li><a href="#surveys">/surveys</a></li></ul></div></div></div></div></body></html>

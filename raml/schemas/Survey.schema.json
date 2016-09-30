@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "subTitle": { "type": "string" },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "receiveResults": {
+      "type": "boolean"
+    },
+    "publishResults": {
+      "type": "boolean"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": ["title", "subTitle", "questions"]
+}

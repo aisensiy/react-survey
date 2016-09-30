@@ -1,0 +1,28 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "title": { "type": "string" },
+      "subTitle": { "type": "string" },
+      "questions": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "receiveResults": {
+        "type": "boolean"
+      },
+      "publishResults": {
+        "type": "boolean"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  }
+}
