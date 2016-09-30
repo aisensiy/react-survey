@@ -11,7 +11,7 @@ class TopNavBar extends Component {
         <Nav pullRight>
           <NavDropdown eventKey={3} title={currentUser.username} id="basic-nav-dropdown">
             <MenuItem divider/>
-            <MenuItem href="/#/logout">Logout</MenuItem>
+            <MenuItem href="#/logout">Logout</MenuItem>
           </NavDropdown>
         </Nav>
     );
