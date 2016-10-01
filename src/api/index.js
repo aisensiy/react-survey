@@ -34,7 +34,7 @@ export const login = (username, password) => {
 };
 
 export const logout = () => {
-  delete localStorege.session;
+  delete localStorage.session;
   return Promise.resolve();
 };
 

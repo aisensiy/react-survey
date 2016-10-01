@@ -20,8 +20,8 @@ class TopNavBar extends Component {
   unLoginView() {
     return (
         <Nav pullRight>
-          <NavItem eventKey={1} href="/#/login">Login</NavItem>
-          <NavItem eventKey={1} href="/#/register">Register</NavItem>
+          <NavItem eventKey={1} href="#/login">Login</NavItem>
+          <NavItem eventKey={1} href="#/register">Register</NavItem>
         </Nav>
 
     );
