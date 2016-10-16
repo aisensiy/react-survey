@@ -2,7 +2,7 @@
 
 Right now, there are many tutorial react apps to show how to make it work with redux and react, but these apps do not help to learn how to handle a real project. Survey or questionaier is a well-known problem. React Survey is a project show how to use redux and react build a more complicated web application.
 
-See live demo [here](https://react-survey.herokuapp.com)
+See live demo [here](https://aisensiy.github.io/react-survey)
 
 ## Run
 
