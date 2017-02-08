@@ -22,7 +22,7 @@ class SurveyDataPage extends React.Component {
   render() {
     return (
         <div className="container">
-          <ResultGrid/>
+          <ResultGrid surveyId={this.props.surveyId}/>
           <ResultModal/>
         </div>
     );

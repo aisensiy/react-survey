@@ -72,6 +72,6 @@ export const updateSurvey = (survey) => {
   return fetcher.put(`/surveys/${survey._id}`, survey).then(res => res.data);
 };
 
-export const deleteResults = (survey, results) => {
-  return Promise.all(results.map(result => fetcher.delete(`/surveys/${survey._id}/results/${result._id}`)));
+export const deleteResults = (surveyId, results) => {
+  return Promise.all(results.map(result => fetcher.delete(`/surveys/${surveyId}/results/${result._id}`)));
 };

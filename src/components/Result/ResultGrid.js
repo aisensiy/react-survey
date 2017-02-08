@@ -13,7 +13,7 @@ class ResultGrid extends React.Component {
   }
 
   render() {
-    let { onClickRow, onSelectRow, rowSelects, allSelected, onDeleteRow } = this.props;
+    let { onClickRow, onSelectRow, rowSelects, allSelected, onDeleteRow, surveyId } = this.props;
     let { columns, results } = this.props.grid;
     let anySelected = Object.keys(rowSelects).some(k => rowSelects[k]);
 
@@ -21,7 +21,7 @@ class ResultGrid extends React.Component {
         <div className="ResultGrid">
           <div className="grid-wrapper">
             <div className="toolbar">
-              <Button className={anySelected ? '' : 'disabled'} bsStyle="primary" bsSize="xsmall" onClick={() => onDeleteRow(results.filter(r => rowSelects[r._id]))}>Delete</Button>
+              <Button className={anySelected ? '' : 'disabled'} bsStyle="primary" bsSize="xsmall" onClick={() => onDeleteRow(surveyId, results.filter(r => rowSelects[r._id]))}>Delete</Button>
             </div>
 
             <table className="table table-condensed table-hover table-bordered">

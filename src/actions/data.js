@@ -13,8 +13,8 @@ import {
 
 import { SET_FILTER } from '../reducers/data/reportFilter';
 
-export const deleteRows = (deleteds) => dispatch => {
-  return api.deleteResults(deleteds).then(() => {
+export const deleteRows = (surveyId, deleteds) => dispatch => {
+  return api.deleteResults(surveyId, deleteds).then(() => {
     let deletedMap = keyBy(deleteds, e => e._id);
     dispatch({
       type: DELETE_ROW,
