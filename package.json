@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.2.3"
   },
   "homepage": "http://aisensiy.github.io/react-survey",
@@ -27,7 +28,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
