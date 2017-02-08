@@ -33,7 +33,7 @@ class TopNavBar extends Component {
         <Navbar className="TopNavBar">
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">
+              <a href={location.pathname}>
                 React Survey
               </a>
             </Navbar.Brand>

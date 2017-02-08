@@ -35,7 +35,7 @@ class OverviewSurveyPage extends React.Component {
   }
 
   surveyUrl(survey) {
-    return location.origin + '/#' + Path.viewSurvey(survey);
+    return location.origin + location.pathname + '#' + Path.viewSurvey(survey);
   }
 
   render() {
