@@ -4,6 +4,24 @@ Right now, there are many tutorial react apps to show how to make it work with r
 
 See live demo [here](https://aisensiy.github.io/react-survey)
 
+## features
+
+### survey editor
+
+![](assets/edit-survey.gif)
+
+### survey collect
+
+![](assets/collect-data.gif)
+
+### data view
+
+![](assets/view-data.gif)
+
+### report process
+
+![](assets/report-filter.gif)
+
 ## Run
 
 ```
