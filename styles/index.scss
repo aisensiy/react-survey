@@ -1,0 +1,102 @@
+@import "./layout";
+@import "./sidebar";
+@import "./survey";
+
+@mixin active {
+  background-color: #f9f9f9;
+}
+
+body, html {
+  height: 100%;
+  #root {
+    min-height: 100%;
+  }
+}
+
+.main-nav {
+  border-bottom: 1px solid gray;
+}
+
+.survey-list {
+  ul, li {
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+    margin: 10px 0;
+    box-sizing: border-box;
+    width: 25%;
+    padding: 0.25rem;
+    height: 15rem;
+  }
+  li > div {
+    height: 15.5rem;
+  }
+
+  .card-body {
+    height: 5rem;
+    overflow: auto;
+  }
+}
+
+table.matrix {
+  border: 0.1rem solid #efefef;
+  td, tr {
+    border: 0.1rem solid #efefef;
+    text-align: center;
+    padding: 1rem;
+  }
+  .form-checkbox, .form-radio {
+    padding: 10px;
+  }
+}
+
+.sortable {
+  margin: 0;
+  > li {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+}
+
+.sortable-placeholder {
+  border: 1px dashed silver;
+}
+
+.survey {
+  .question {
+    padding: 15px 25px;
+    &.active, &:hover {
+      @include active();
+    }
+
+    .question-title, .form-group {
+      margin: 5px;
+    }
+  }
+}
+
+.question-types {
+  button {
+    width: 48%;
+    margin: 1%;
+  }
+}
+
+.handle {
+  cursor: move
+}
+
+.table.data-table {
+  font-weight: normal;
+  font-size: 1.4rem;
+  border: 0;
+  tr {
+    border: 0;
+  }
+  td, th {
+    border: 1px solid silver;
+    padding: 0.5rem 0.5rem;
+  }
+}
