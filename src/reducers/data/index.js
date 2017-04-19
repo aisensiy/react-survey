@@ -123,7 +123,7 @@ export const hasFilterMap = (state) => {
       if (typeof answer[answerId] === 'boolean') {
         return answer[answerId];
       } else if (typeof answer[answerId] === 'object') {
-        return Object.keys(answer[answerId]).some(k => answer[answerId][key]);
+        return Object.keys(answer[answerId]).some(k => answer[answerId][k]);
       }
     });
     hasFilterMap[questionId] = hasFilter;

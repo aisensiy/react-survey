@@ -59,10 +59,10 @@ class OverviewSurveyPage extends React.Component {
                 </div>
                 <div className="content">
                   <Toggle
-                      checked={!!survey.receiveResults}
+                      checked={!!survey.receive_results}
                       aria-labelledby="biscuit-label"
                       onChange={() => {
-                        survey.receiveResults = !survey.receiveResults;
+                        survey.receive_results = !survey.receive_results;
                         updateSurvey(survey);
                       }} />
                 </div>
@@ -73,10 +73,10 @@ class OverviewSurveyPage extends React.Component {
                 </div>
                 <div className="content">
                   <Toggle
-                      checked={!!survey.publishResults}
+                      checked={!!survey.publish_results}
                       aria-labelledby="biscuit-label"
                       onChange={() => {
-                        survey.publishResults = !survey.publishResults;
+                        survey.publish_results = !survey.publish_results;
                         updateSurvey(survey);
                       }} />
                 </div>

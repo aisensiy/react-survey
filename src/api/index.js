@@ -1,4 +1,3 @@
-import  PouchDB from 'pouchdb';
 import newId from '../util/idGenerator';
 import axios from 'axios';
 import { hashHistory } from 'react-router';
@@ -7,7 +6,7 @@ const fetcher = axios.create({
   baseURL: process.env.REACT_APP_ENDPOINT,
   headers: {
     'Content-Type': 'application/json',
-    'Authentication': localStorage.session
+    'Authorization': localStorage.session
   },
   transformResponse: [function (data) {
     if (data) {
@@ -22,14 +21,14 @@ export const createUser = (params) => {
   return fetcher.post("/users", params).then(res => res.data);
 };
 
-export const login = (username, password) => {
-  return fetcher.post("/authentication", {
-    username,
+export const login = (email, password) => {
+  return fetcher.post("/login", {
+    email,
     password
   }).then(res => {
-    localStorage.session = res.data.sessionToken;
-    fetcher.defaults.headers.common['Authentication'] = res.data.sessionToken;
-    return res.data;
+    localStorage.session = res.data.auth;
+    fetcher.defaults.headers.common['Authorization'] = res.data.auth;
+    return fetcher.get("/users/me").then(res => res.data);
   });
 };
 
@@ -39,8 +38,7 @@ export const logout = () => {
 };
 
 export const fetchCurrentUser = () => {
-  return fetcher.get("authentication").then(res => {
-    fetcher.defaults.headers.common['Authentication'] = res.data.sessionToken;
+  return fetcher.get("/users/me").then(res => {
     return res.data;
   });
 };
@@ -66,7 +64,7 @@ export const fetchSurvey = (surveyId) => {
   return fetcher.get(`/surveys/${surveyId}`).then(res => res.data);
 };
 
-export const deleteSurvey = surveyId => db.remove(surveyId);
+export const deleteSurvey = surveyId => {};
 
 export const updateSurvey = (survey) => {
   return fetcher.put(`/surveys/${survey._id}`, survey).then(res => res.data);
