@@ -1,5 +1,11 @@
 import React, { PropTypes } from 'react';
-import { BarChart, XAxis, YAxis, Bar, CartesianGrid, Tooltip } from 'recharts';
+import BarChart from 'recharts/lib/chart/BarChart';
+import Bar from 'recharts/lib/cartesian/Bar';
+import XAxis from 'recharts/lib/cartesian/XAxis';
+import YAxis from 'recharts/lib/cartesian/YAxis';
+import CartesianGrid from 'recharts/lib/cartesian/CartesianGrid';
+import Tooltip from 'recharts/lib/component/Tooltip';
+
 
 class GraphReport extends React.Component {
   render() {
