@@ -33,9 +33,9 @@ npm start
 
 Redux is a well-known flux style state management framework. Learn more from [http://redux.js.org/](http://redux.js.org/)
 
-## Use RAML to description backend api
+## Use Rails as Backend API
 
-[RAML](http://raml.org). RESTful API Modeling Language (RAML) makes it easy to manage the whole API lifecycle from design to sharing. It's concise - you only write what you need to define - and reusable. It is machine readable API design that is actually human friendly. And there is an implementation of this backend api at [https://github.com/aisensiy/react-survey-backend](https://github.com/aisensiy/react-survey-backend);
+[Backend API Project](https://github.com/aisensiy/rails-survey-backend)
 
 ## Use create react app
 
