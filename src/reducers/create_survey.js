@@ -28,5 +28,5 @@ export default function (state = initState, action) {
 }
 
 export const newSurveyRedirectPath = (survey) => {
-  return `/surveys/${survey._id}/edit`;
+  return `/surveys/${survey.id}/edit`;
 };

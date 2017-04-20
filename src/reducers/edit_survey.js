@@ -2,19 +2,19 @@ import { combineReducers } from 'redux';
 import tabTypes from '../constants/TabTypes';
 
 export const assembleSurvey = (survey) => {
-  const { _id, title, subTitle, questions } = survey;
+  const { id, title, subTitle, questions } = survey;
   const orderQuestions = survey.question_order.map(questionId => questions[questionId]);
   return {
     ...survey.original,
     title,
     subTitle,
-    _id,
+    id,
     questions: [...orderQuestions]
   };
 };
 
 const surveyReducer = (state = {
-  survey: {_id: '', questions: {}, question_order: []},
+  survey: {id: '', questions: {}, question_order: []},
   isLoading: false,
   error: null
 }, action) => {

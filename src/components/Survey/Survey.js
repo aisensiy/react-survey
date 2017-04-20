@@ -42,7 +42,7 @@ class Survey extends React.Component {
 
     return (
         <div className="Survey">
-          <form onSubmit={handleSubmit(this.props.onSubmit(survey._id))}>
+          <form onSubmit={handleSubmit(this.props.onSubmit(survey.id))}>
             <header>
               <h3>{title}</h3>
               <p>{subTitle}</p>

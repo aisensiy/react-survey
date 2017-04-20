@@ -66,11 +66,11 @@ export default function routes(store) {
 
 export const Path = {
   survey(survey) {
-    return `/user/surveys/${survey._id}/`;
+    return `/user/surveys/${survey.id}/`;
   },
 
   editSurvey(survey) {
-    return `/user/surveys/${survey._id}/edit`;
+    return `/user/surveys/${survey.id}/edit`;
   },
 
   surveyList() {
@@ -78,7 +78,7 @@ export const Path = {
   },
 
   viewSurvey(survey) {
-    return `/surveys/${survey._id}`;
+    return `/surveys/${survey.id}`;
   },
 
   login() {

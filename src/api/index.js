@@ -1,20 +1,14 @@
 import newId from '../util/idGenerator';
 import axios from 'axios';
 import { hashHistory } from 'react-router';
+import decode from 'jwt-decode';
 
 const fetcher = axios.create({
   baseURL: process.env.REACT_APP_ENDPOINT,
   headers: {
     'Content-Type': 'application/json',
     'Authorization': localStorage.session
-  },
-  transformResponse: [function (data) {
-    if (data) {
-      return JSON.parse(data.replace(/"id"/g, '"_id"').replace(/"objectId"/g, '"_id"'));
-    } else {
-      return data;
-    }
-  }]
+  }
 });
 
 export const createUser = (params) => {
@@ -28,7 +22,7 @@ export const login = (email, password) => {
   }).then(res => {
     localStorage.session = res.data.auth;
     fetcher.defaults.headers.common['Authorization'] = res.data.auth;
-    return fetcher.get("/users/me").then(res => res.data);
+    return decode(res.data.auth);
   });
 };
 
@@ -44,7 +38,7 @@ export const fetchCurrentUser = () => {
 };
 
 export const fetchUserSurveys = (user) => {
-  return fetcher.get(`/users/${user._id}/surveys`).then(res => res.data);
+  return fetcher.get(`/users/${user.id}/surveys`).then(res => res.data);
 };
 
 export const fetchResults = (surveyId) => {
@@ -67,9 +61,9 @@ export const fetchSurvey = (surveyId) => {
 export const deleteSurvey = surveyId => {};
 
 export const updateSurvey = (survey) => {
-  return fetcher.put(`/surveys/${survey._id}`, survey).then(res => res.data);
+  return fetcher.put(`/surveys/${survey.id}`, survey).then(res => res.data);
 };
 
 export const deleteResults = (surveyId, results) => {
-  return Promise.all(results.map(result => fetcher.delete(`/surveys/${surveyId}/results/${result._id}`)));
+  return Promise.all(results.map(result => fetcher.delete(`/surveys/${surveyId}/results/${result.id}`)));
 };

@@ -7,7 +7,7 @@ export const FETCH_SURVEY_REQUEST = 'SURVEY_FETCH_SURVEY_REQUEST';
 export const FETCH_SURVEY_REQUEST_SUCCESS = 'SURVEY_FETCH_SURVEY_REQUEST_SUCCESS';
 export const FETCH_SURVEY_REQUEST_FAIL = 'SURVEY_FETCH_SURVEY_REQUEST_FAIL';
 
-export const fetchReducer = (state={survey: {_id: '', questions: []}, isLoading: false, error: null}, action) => {
+export const fetchReducer = (state={survey: {id: '', questions: []}, isLoading: false, error: null}, action) => {
   switch (action.type) {
     case FETCH_SURVEY_REQUEST:
       return {

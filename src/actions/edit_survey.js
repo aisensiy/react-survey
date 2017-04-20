@@ -10,7 +10,7 @@ export const normalizeSurvey = (survey) => {
   });
   let question_order = survey.questions.map(question => question._id);
   return {
-    _id: survey._id,
+    id: survey.id,
     title: survey.title,
     subTitle: survey.subTitle,
     questions: questions,
@@ -96,7 +96,7 @@ export const updateSurvey = survey => dispatch => {
     dispatch({
       type: 'UPDATE_SURVEY_REQUEST_SUCCESS'
     });
-    dispatch(fetchSurvey(survey._id));
+    dispatch(fetchSurvey(survey.id));
   }).catch((err) => {
     dispatch({
       type: 'UPDATE_SURVEY_REQUEST_FAIL',
