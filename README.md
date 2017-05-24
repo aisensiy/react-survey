@@ -24,19 +24,18 @@ See live demo [here](https://aisensiy.github.io/react-survey)
 
 ## Run
 
-```
+This is just a front end part of the whole application. To make the application work, the backend part is also necessary.
+
+### For Frontend
+
+```sh
 npm install
+export REACT_APP_ENDPOINT=http://locahost:3000
 npm start
 ```
 
-## Use Redux
+### For Backend
 
-Redux is a well-known flux style state management framework. Learn more from [http://redux.js.org/](http://redux.js.org/)
+Get the backend part from [here](https://github.com/aisensiy/rails-survey-backend). This is a rails5 application. You need install ruby on your machine. 
 
-## Use Rails as Backend API
-
-[Backend API Project](https://github.com/aisensiy/rails-survey-backend)
-
-## Use create react app
-
-[create-react-app](https://github.com/facebookincubator/create-react-app) to Create React apps with no build configuration.
+The fatest way to deploy the backend is to use [Heroku](https://www.heroku.com/).
