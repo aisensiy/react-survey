@@ -30,7 +30,7 @@ This is just a front end part of the whole application. To make the application 
 
 ```sh
 npm install
-export REACT_APP_ENDPOINT=http://locahost:3000
+export REACT_APP_ENDPOINT=http://localhost:3000
 npm start
 ```
 
