@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import './EditTab.css';
 
 var classNames = require('classnames');
-
-import './EditTab.css';
 
 class EditTab extends Component {
   render() {

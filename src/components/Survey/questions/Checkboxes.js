@@ -1,7 +1,18 @@
-import React, { Component, PropTypes } from "react";
-import { Field } from 'redux-form';
+// @flow
 
-class MultipleChoice extends Component {
+import * as React from 'react';
+import { Field } from 'formik';
+
+type Props = {
+  _id: string,
+  title: string,
+  options: {
+    _id: string,
+    content: string
+  }[]
+};
+
+class MultipleChoice extends React.Component<Props> {
   render() {
     const { title, options, _id } = this.props;
     return (
@@ -23,10 +34,5 @@ class MultipleChoice extends Component {
     );
   }
 }
-
-MultipleChoice.propTypes = {
-  title: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired
-};
 
 export default MultipleChoice;

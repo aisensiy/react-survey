@@ -1,3 +1,6 @@
+/* global location */
+/* eslint no-restricted-globals: ["off", "location"] */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -28,12 +31,14 @@ class TopNavBar extends Component {
   }
 
   render() {
+    //eslint-disable-next-line
+    let pathname = location.pathname;
     let { currentUser } = this.props;
     return (
         <Navbar className="TopNavBar">
           <Navbar.Header>
             <Navbar.Brand>
-              <a href={location.pathname}>
+              <a href={pathname}>
                 React Survey
               </a>
             </Navbar.Brand>

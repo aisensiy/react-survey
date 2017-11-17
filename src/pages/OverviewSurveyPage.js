@@ -1,3 +1,6 @@
+/* global location */
+/* eslint no-restricted-globals: ["off", "location"] */
+
 import React from 'react';
 import Toggle from 'react-toggle';
 import { Button } from 'react-bootstrap';

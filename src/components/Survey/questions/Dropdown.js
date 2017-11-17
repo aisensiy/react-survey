@@ -1,7 +1,19 @@
-import React, { Component, PropTypes } from "react";
-import { Field } from 'redux-form';
+// @flow
 
-class Dropdown extends Component {
+import * as React from "react";
+import { Field } from 'formik';
+
+type Props = {
+  _id: string,
+  title: string,
+  options: {
+    _id: string,
+    content: string
+  }[]
+};
+
+
+class Dropdown extends React.Component<Props> {
   render() {
     const { title, options, _id } = this.props;
     return (
@@ -21,11 +33,5 @@ class Dropdown extends Component {
     );
   }
 }
-
-Dropdown.propTypes = {
-  title: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
-  _id: PropTypes.string.isRequired
-};
 
 export default Dropdown;

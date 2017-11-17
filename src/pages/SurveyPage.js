@@ -48,9 +48,7 @@ const mapStateToProps = (state, { params }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (surveyId) => (values, dispatch) => {
-      return dispatch(submitResult(surveyId, values));
-    },
+    onSubmit: bindActionCreators(submitResult, dispatch),
     fetchSurvey: bindActionCreators(fetchSurvey, dispatch)
   };
 };

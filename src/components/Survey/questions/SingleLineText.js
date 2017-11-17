@@ -1,7 +1,15 @@
-import React, { Component, PropTypes } from "react";
-import { Field } from 'redux-form';
+// @flow
 
-class SingleLineText extends Component {
+import * as React from "react";
+import { Field } from 'formik';
+
+type Props = {
+  _id: string,
+  title: string,
+  placeholder: string
+};
+
+class SingleLineText extends React.Component<Props> {
   render() {
     const { title, placeholder, _id } = this.props;
     return (
@@ -14,11 +22,5 @@ class SingleLineText extends Component {
     );
   }
 }
-
-SingleLineText.propTypes = {
-  title: PropTypes.string,
-  placeholder: PropTypes.string,
-  _id: PropTypes.string
-};
 
 export default SingleLineText;

@@ -1,9 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 import QuestionWrapper from './QuestionWrapper';
-import { reduxForm } from 'redux-form';
+import { withFormik } from 'formik';
 import './Survey.css';
 
-class Survey extends React.Component {
+type Props = {
+  survey: object,
+  isLoading: bool,
+  error: object,
+  onSubmit: func,
+  isSuccess: bool
+};
+
+class Survey extends React.Component<Props> {
   renderError() {
     return <div>Error!</div>
   }
@@ -19,7 +27,6 @@ class Survey extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     let { survey, isLoading, error, handleSubmit, isSuccess } = this.props;
 
     let { title, subTitle, questions } = survey;
@@ -42,7 +49,7 @@ class Survey extends React.Component {
 
     return (
         <div className="Survey">
-          <form onSubmit={handleSubmit(this.props.onSubmit(survey.id))}>
+          <form onSubmit={handleSubmit}>
             <header>
               <h3>{title}</h3>
               <p>{subTitle}</p>
@@ -61,14 +68,11 @@ class Survey extends React.Component {
   }
 }
 
-Survey.propTypes = {
-  survey: React.PropTypes.object,
-  isLoading: React.PropTypes.bool,
-  error: React.PropTypes.object,
-  onSubmit: React.PropTypes.func,
-  isSuccess: React.PropTypes.bool
-};
-
-export default reduxForm({
-  form: 'survey'
+export default withFormik({
+  mapPropsToValues: () => {},
+  handleSubmit: ( values, { props }) => {
+    console.log(values);
+    console.log(props);
+    props.onSubmit(props.survey.id, values)
+  }
 })(Survey);

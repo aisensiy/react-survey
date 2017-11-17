@@ -3279,6 +3279,10 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
+flow-bin@^0.59.0:
+  version "0.59.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.59.0.tgz#8c151ee7f09f1deed9bf0b9d1f2e8ab9d470f1bb"
+
 follow-redirects@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-0.0.7.tgz#34b90bab2a911aa347571da90f22bd36ecd8a919"
@@ -3319,6 +3323,14 @@ form-data@~2.3.1:
     asynckit "^0.4.0"
     combined-stream "^1.0.5"
     mime-types "^2.1.12"
+
+formik@^0.10.4:
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-0.10.4.tgz#39747caa57b0f72f127b44b87e8a36f75f19926f"
+  dependencies:
+    lodash.isequal "4.5.0"
+    prop-types "^15.5.10"
+    warning "^3.0.0"
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -4782,6 +4794,10 @@ lodash.isarguments@^3.0.0:
 lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
+
+lodash.isequal@4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
 
 lodash.isplainobject@^4.0.6:
   version "4.0.6"

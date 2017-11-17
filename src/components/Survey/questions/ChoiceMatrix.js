@@ -1,6 +1,23 @@
-import React, { Component, PropTypes } from "react";
+// @flow
 
-class MultipleChoice extends Component {
+import * as React from "react";
+import { Field } from 'formik';
+
+type Props = {
+  id: string,
+  title: string,
+  name: string,
+  questions: {
+    id: string,
+    content: string
+  }[],
+  options: {
+    id: string,
+    content: string
+  }[]
+};
+
+class MultipleChoice extends React.Component<Props> {
   render() {
     const { title, options, name, questions, id } = this.props;
     return (
@@ -23,7 +40,7 @@ class MultipleChoice extends Component {
                   {options.map((option, idx) => {
                     return <td key={option.id}>
                       <label className="form-radio">
-                        <input type="radio" name={`${id}[${question.id}]`} value={option.id}/>
+                        <Field type="radio" name={`${id}[${question.id}]`} value={option.id}/>
                         <i className="form-icon"></i>
                       </label>
                     </td>
@@ -37,12 +54,5 @@ class MultipleChoice extends Component {
     );
   }
 }
-
-MultipleChoice.propTypes = {
-  title: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
-  name: PropTypes.string.isRequired,
-  questions: PropTypes.array.isRequired
-};
 
 export default MultipleChoice;
