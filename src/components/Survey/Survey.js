@@ -71,8 +71,6 @@ class Survey extends React.Component<Props> {
 export default withFormik({
   mapPropsToValues: () => {},
   handleSubmit: ( values, { props }) => {
-    console.log(values);
-    console.log(props);
     props.onSubmit(props.survey.id, values)
   }
 })(Survey);
