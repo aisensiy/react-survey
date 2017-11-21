@@ -26,7 +26,6 @@
     "react-toggle": "^2.1.1",
     "recharts": "^0.13.4",
     "redux": "^3.5.2",
-    "redux-form": "^6.0.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0"
   },
