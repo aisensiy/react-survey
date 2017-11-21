@@ -1,17 +1,23 @@
-import React, { Component, PropTypes } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import * as React from 'react';
+import { withFormik, Field } from 'formik';
 
-const renderInput = field =>
+type Props = {
+  onSubmit: func
+};
+
+const renderInput = ({field, form: { touched, errors }, ...props}) =>
     <div>
-      <input {...field.input} type={field.type} className="form-control"/>
-      {field.meta.touched &&
-      field.meta.error &&
-      <span className="help-block">{field.meta.error}</span>}
+      <input {...field.input} {...field} {...props} className="form-control" />
+      {
+        touched[field.name] &&
+        errors[field.name] &&
+        <span className="help-block">{field.meta.error}</span>
+      }
     </div>;
 
-class LoginForm extends Component {
+class LoginForm extends React.Component<Props> {
   render() {
-    let { submitting, handleSubmit } = this.props;
+    let { isSubmitting, handleSubmit } = this.props;
     return (
         <form onSubmit={handleSubmit}>
           <legend>Login</legend>
@@ -29,7 +35,7 @@ class LoginForm extends Component {
                 component={renderInput}
                 type="password"/>
           </div>
-          {submitting ?
+          {isSubmitting ?
               <button className="btn btn-primary" type="submit" disabled>Loading...</button> :
               <button className="btn btn-primary" type="submit">Login</button>}
         </form>
@@ -37,12 +43,9 @@ class LoginForm extends Component {
   }
 }
 
-LoginForm.propTypes = {
-  submitting: PropTypes.bool.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
-};
-
-export default reduxForm({
-  form: 'login'
+export default withFormik({
+  mapPropsToValues: () => {},
+  handleSubmit: (values, { props }) => {
+    props.onSubmit(values)
+  }
 })(LoginForm);

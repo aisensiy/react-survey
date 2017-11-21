@@ -27,9 +27,9 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (values, dispatch) => {
+    onSubmit: (values) => {
       return dispatch(loginRequest(values.username, values.password)).then(res => {
         dispatch(loginRequestSuccess(res));
         return Promise.resolve(res);
