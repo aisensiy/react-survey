@@ -27,6 +27,7 @@ class LoginForm extends React.Component<Props> {
             <Field
                 name="username"
                 component={renderInput}
+                placeholder="admin@example.com"
                 type="text"/>
           </div>
           <div className="form-group">
@@ -34,6 +35,7 @@ class LoginForm extends React.Component<Props> {
             <Field
                 name="password"
                 component={renderInput}
+                placeholder="123"
                 type="password"/>
           </div>
           {isSubmitting ?
