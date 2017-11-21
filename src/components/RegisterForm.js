@@ -1,17 +1,22 @@
-import React, { Component, PropTypes } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import * as React from 'react';
+import { Field, withFormik } from 'formik';
 
-const renderInput = field =>
+const renderInput = ({field, form: { touched, errors }, ...props}) =>
     <div>
-      <input {...field.input} type={field.type} className="form-control"/>
-      {field.meta.touched &&
-      field.meta.error &&
-      <span className="help-block">{field.meta.error}</span>}
+      <input {...field.input} {...field} {...props} className="form-control" />
+      {
+        errors[field.name] &&
+        <span className="text-danger help-block">{errors[field.name].join(" ")}</span>
+      }
     </div>;
 
-class RegisterForm extends Component {
+type Props = {
+  onSubmit: func
+};
+
+class RegisterForm extends React.Component<Props> {
   render() {
-    let { submitting, handleSubmit } = this.props;
+    let { isSubmitting, handleSubmit, errors, touched } = this.props;
     return (
         <form onSubmit={handleSubmit}>
           <legend>Register</legend>
@@ -20,6 +25,7 @@ class RegisterForm extends Component {
             <Field
                 name="username"
                 component={renderInput}
+                form={{errors, touched}}
                 type="text"/>
           </div>
           <div className="form-group">
@@ -43,7 +49,7 @@ class RegisterForm extends Component {
                 component={renderInput}
                 type="password"/>
           </div>
-          {submitting ?
+          {isSubmitting ?
               <button className="btn btn-primary" type="submit" disabled>Loading...</button> :
               <button className="btn btn-primary" type="submit">Submit</button>}
         </form>
@@ -51,12 +57,14 @@ class RegisterForm extends Component {
   }
 }
 
-RegisterForm.propTypes = {
-  submitting: PropTypes.bool.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
-};
-
-export default reduxForm({
-  form: 'register'
+export default withFormik({
+  mapPropsToValues: () => {},
+  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
+    props.onSubmit(values).then(() => {
+      setSubmitting(false);
+    }, (errors) => {
+      setSubmitting(false);
+      setErrors(errors.response.data);
+    })
+  }
 })(RegisterForm);

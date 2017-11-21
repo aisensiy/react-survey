@@ -49,7 +49,7 @@ export default withFormik({
   handleSubmit: (values, { props, setSubmitting, setErrors }) => {
     props.onSubmit(values).then(() => {
       setSubmitting(false);
-    }, errors => {
+    }, () => {
       setSubmitting(false);
       setErrors({
         message: "Invalid email or password"

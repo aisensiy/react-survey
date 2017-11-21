@@ -25,9 +25,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (values, dispatch) => {
+    onSubmit: (values) => {
       return dispatch(registerRequest({
         username: values.username,
         email: values.email,
