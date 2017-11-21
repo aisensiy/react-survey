@@ -17,10 +17,11 @@ const renderInput = ({field, form: { touched, errors }, ...props}) =>
 
 class LoginForm extends React.Component<Props> {
   render() {
-    let { isSubmitting, handleSubmit } = this.props;
+    let { isSubmitting, handleSubmit, errors } = this.props;
     return (
         <form onSubmit={handleSubmit}>
           <legend>Login</legend>
+          {errors.message && <div className="alert alert-danger" role="alert">{errors.message}</div>}
           <div className="form-group">
             <label htmlFor="">Email</label>
             <Field
@@ -45,7 +46,14 @@ class LoginForm extends React.Component<Props> {
 
 export default withFormik({
   mapPropsToValues: () => {},
-  handleSubmit: (values, { props }) => {
-    props.onSubmit(values)
+  handleSubmit: (values, { props, setSubmitting, setErrors }) => {
+    props.onSubmit(values).then(() => {
+      setSubmitting(false);
+    }, errors => {
+      setSubmitting(false);
+      setErrors({
+        message: "Invalid email or password"
+      })
+    })
   }
 })(LoginForm);
