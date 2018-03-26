@@ -1,6 +1,6 @@
 # React Survey
 
-Right now, there are many tutorial react apps to show how to make it work with redux and react, but these apps do not help to learn how to handle a real project. Survey or questionaier is a well-known problem. React Survey is a project show how to use redux and react build a more complicated web application.
+Many tutorials cover basics of React and Redux, but they aren't helpful in handling a real world project such as survey or questionnaire. React Survey project shows how to build a more complex web application with React and Redux. 
 
 See live demo [here](https://aisensiy.github.io/react-survey)
 
@@ -24,9 +24,9 @@ See live demo [here](https://aisensiy.github.io/react-survey)
 
 ## Run
 
-This is just a front end part of the whole application. To make the application work, the backend part is also necessary.
+The demo only shows a front end of the application. For a fully functioning application, the back end part is also necessary.
 
-### For Frontend
+### Installing Front End
 
 ```sh
 npm install
@@ -34,8 +34,8 @@ export REACT_APP_ENDPOINT=http://localhost:3000
 npm start
 ```
 
-### For Backend
+### Installing Back End
 
-Get the backend part from [here](https://github.com/aisensiy/rails-survey-backend). This is a rails5 application. You need install ruby on your machine. 
+Get the back end part from [here](https://github.com/aisensiy/rails-survey-backend). This is a Rails 5 application. You need to install Ruby on your machine. 
 
-The fatest way to deploy the backend is to use [Heroku](https://www.heroku.com/).
+The fastest way to deploy the back end is to use [Heroku](https://www.heroku.com/).
