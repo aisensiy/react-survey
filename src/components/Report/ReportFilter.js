@@ -57,7 +57,7 @@ class ReportFilter extends React.Component {
   filterLabels() {
     let { survey, reportFilter, hasFilterMap } = this.props;
     let labels = [];
-    {Object.keys(reportFilter).filter(k => hasFilterMap[k]).forEach(questionId => {
+    Object.keys(reportFilter).filter(k => hasFilterMap[k]).forEach(questionId => {
       let question = survey.questions.find(q => q._id === questionId);
       question.options.forEach(option => {
         if (reportFilter[questionId][option._id]) {
@@ -67,7 +67,7 @@ class ReportFilter extends React.Component {
           });
         }
       });
-    })}
+    });
     return labels;
   }
 

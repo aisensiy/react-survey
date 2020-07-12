@@ -125,6 +125,7 @@ export const hasFilterMap = (state) => {
       } else if (typeof answer[answerId] === 'object') {
         return Object.keys(answer[answerId]).some(k => answer[answerId][k]);
       }
+      return null;
     });
     hasFilterMap[questionId] = hasFilter;
   });

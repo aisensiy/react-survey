@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SurveyHeader extends React.Component {
   render() {
@@ -13,8 +14,8 @@ class SurveyHeader extends React.Component {
 }
 
 SurveyHeader.propTypes = {
-  title: React.PropTypes.string,
-  subTitle: React.PropTypes.string
+  title: PropTypes.string,
+  subTitle: PropTypes.string
 };
 SurveyHeader.defaultProps = {};
 

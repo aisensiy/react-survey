@@ -1,6 +1,4 @@
-import newId from '../util/idGenerator';
 import axios from 'axios';
-import { hashHistory } from 'react-router';
 import decode from 'jwt-decode';
 
 const fetcher = axios.create({

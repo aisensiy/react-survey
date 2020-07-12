@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import { QuestionTypes } from '../../constants/Questions';
 import MultipleChoiceEditor from './question_editors/MultipleChoiceEditor';
 import TextEditor from './question_editors/TextEditor';

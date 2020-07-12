@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SurveyHeader from './SurveyHeader';
 
 import './SurveyPreview.css';
@@ -43,11 +44,11 @@ class SurveyPreview extends React.Component {
 }
 
 SurveyPreview.propTypes = {
-  survey: React.PropTypes.object,
-  isLoading: React.PropTypes.bool.isRequired,
-  error: React.PropTypes.object,
-  isHeaderActive: React.PropTypes.bool,
-  onHeaderActive: React.PropTypes.func
+  survey: PropTypes.object,
+  isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.object,
+  isHeaderActive: PropTypes.bool,
+  onHeaderActive: PropTypes.func
 };
 
 export default SurveyPreview;

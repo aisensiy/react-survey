@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import SurveyItem from './SurveyItem';
 import './SurveyList.css';
 
@@ -18,7 +19,7 @@ class SurveyList extends React.Component {
 }
 
 SurveyList.propTypes = {
-  surveys: React.PropTypes.array.isRequired
+  surveys: PropTypes.array.isRequired
 };
 
 export default SurveyList;

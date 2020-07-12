@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './EditSurveyPanel.css';
 
 class EditSurveyPanel extends React.Component {
@@ -37,9 +38,9 @@ class EditSurveyPanel extends React.Component {
 }
 
 EditSurveyPanel.propTypes = {
-  onUpdate: React.PropTypes.func.isRequired,
-  title: React.PropTypes.string.isRequired,
-  subTitle: React.PropTypes.string.isRequired
+  onUpdate: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string.isRequired
 };
 
 export default EditSurveyPanel;

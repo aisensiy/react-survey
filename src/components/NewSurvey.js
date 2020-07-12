@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class NewSurvey extends Component {
   render() {
@@ -10,8 +11,8 @@ class NewSurvey extends Component {
 }
 
 NewSurvey.propTypes = {
-  onClick: React.PropTypes.func.isRequired,
-  isLoading: React.PropTypes.bool.isRequired
+  onClick: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 };
 
 export default NewSurvey;

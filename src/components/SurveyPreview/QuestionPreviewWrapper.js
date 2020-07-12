@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from "prop-types";
 import { QuestionTypes } from '../../constants/Questions';
 import SingleLineText from './questions/SingleLineText';
 import MultiLineText from './questions/MultiLineText';

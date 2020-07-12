@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import EditFooterView from '../components/EditPanel/EditFooter';
 import { bindActionCreators } from 'redux';
-import { deleteSurvey, updateSurvey, resetDeleteState } from '../actions/edit_survey';
+import { deleteSurvey, updateSurvey } from '../actions/edit_survey';
 import { assembleSurvey, getSurvey } from '../reducers/edit_survey';
 import { Path } from '../routes';
 

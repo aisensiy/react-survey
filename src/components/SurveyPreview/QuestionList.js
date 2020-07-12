@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import QuestionWrapper from './QuestionPreviewWrapper';
 
 class QuestionList extends React.Component {
@@ -30,13 +31,13 @@ class QuestionList extends React.Component {
 }
 
 QuestionList.propTypes = {
-  questions: React.PropTypes.object,
-  question_order: React.PropTypes.array,
-  active_question_id: React.PropTypes.string,
-  onClone: React.PropTypes.func,
-  onRemove: React.PropTypes.func,
-  onSort: React.PropTypes.func,
-  onActive: React.PropTypes.func
+  questions: PropTypes.object,
+  question_order: PropTypes.array,
+  active_question_id: PropTypes.string,
+  onClone: PropTypes.func,
+  onRemove: PropTypes.func,
+  onSort: PropTypes.func,
+  onActive: PropTypes.func
 };
 
 export default QuestionList;
