@@ -17,7 +17,7 @@
     "cuid": "^1.3.8",
     "formik": "^0.10.4",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.19",
     "prop-types": "^15.7.2",
     "react": "^15.5.4",
     "react-bootstrap": "^0.30.9",
