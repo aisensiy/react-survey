@@ -4,6 +4,16 @@ Many tutorials cover basics of React and Redux, but they aren't helpful in handl
 
 See live demo [here](https://aisensiy.github.io/react-survey)
 
+## Recently Update
+
+Recently I don't have enough time to give frequent update for this project. But it seems there is still someone wanna fork and learn this project. I really appreciate your supports. I will do my best to continue update this project. Here is some plan for this project.
+
+1. Update deprecated codes in react
+2. Update bugs in issue
+3. Give a easier way to make the backend work with frontend
+
+PR is welcome :)
+
 ## Features
 
 ### Survey editor
